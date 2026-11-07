@@ -1,18 +1,18 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Seoul Autumn 2026</title><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Seoul 2026"><meta name="theme-color" content="#6B2232"><link rel="apple-touch-icon" href="icon-180.png"><link rel="manifest" href="manifest.json">
+<title>Seoul Autumn 2026</title><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Seoul 2026"><meta name="theme-color" content="#FF6B8B"><link rel="apple-touch-icon" href="icon-180.png"><link rel="manifest" href="manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Noto+Serif+KR:wght@500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Noto+Serif+KR:wght@500;700;900&family=Mali:wght@500;600;700&family=Jua&display=swap">
 <style>
 /* Layout: editorial trip journal — sticky day rail, timeline cards, bottom nav on phones, top nav on desktop */
 :root{
-  --ivory:#F7F4EF; --burgundy:#722F37; --brown:#795548; --forest:#475746; --charcoal:#252525; --gold:#C7A56B;
-  --bg:#F7F4EF; --surface:#FFFDF9; --sunk:#EFEAE2; --fg:#252525; --muted:#6B625A; --line:#DDD5C9;
-  --accent:#722F37; --accent-fg:#FFFDF9; --leaf:#475746; --bark:#795548; --gilt:#9A7A3E; --gilt-soft:#F1E6CF;
-  --warn-bg:#F6E7D3; --warn-fg:#6E4317; --ok:#3F6B45;
+  --ivory:#FFF8EE; --burgundy:#FF6B8B; --brown:#8E6CEF; --forest:#2EC4B6; --charcoal:#3D348B; --gold:#FFD23F;
+  --bg:#FFF8EE; --surface:#FFFFFF; --sunk:#FFF0DC; --fg:#2E2A4A; --muted:#6E6A8A; --line:#F2D9C6;
+  --accent:#FF5C82; --accent-fg:#FFFFFF; --leaf:#1FB5A6; --bark:#8E6CEF; --gilt:#FF8A1F; --gilt-soft:#FFE9C9;
+  --warn-bg:#FFF1C9; --warn-fg:#7A5300; --ok:#1FA971; --ink:#2E2A4A;
   --f-body:"IBM Plex Sans Thai","DM Sans",system-ui,sans-serif;
   --f-latin:"DM Sans","IBM Plex Sans Thai",system-ui,sans-serif;
-  --f-han:"Noto Serif KR","Apple SD Gothic Neo","Malgun Gothic",serif;
-  --r:10px; --nav-h:64px;
+  --f-han:"Jua","Noto Serif KR","Apple SD Gothic Neo","Malgun Gothic",serif;
+  --r:18px; --nav-h:64px;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   --bg:#1B1817; --surface:#24201E; --sunk:#2D2826; --fg:#F1ECE4; --muted:#B3A99D; --line:#3D3633;
@@ -251,6 +251,36 @@ input[type=file]{display:none}
 .copyfall{width:100%;min-height:160px;margin-top:8px;font-size:12.5px}
 .foot{margin-top:28px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ===== Cute doodle theme ===== */
+body{background-color:var(--bg);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' fill='none' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M30 40l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1z' stroke='%23FFD23F'/%3E%3Cpath d='M160 30c8-10 22-2 14 10l-14 14-14-14c-8-12 6-20 14-10z' stroke='%23FFB3C6'/%3E%3Cpath d='M170 150c-14 0-22 14-22 26 12 0 26-8 26-22l-4-4zm-22 26l14-14' stroke='%23FF9F45'/%3E%3Ccircle cx='60' cy='170' r='6' stroke='%237ED9CF'/%3E%3Cpath d='M100 100q6-8 12 0t12 0' stroke='%23B9A6FF'/%3E%3Cpath d='M200 95v10m-5-5h10' stroke='%23FF8FA3'/%3E%3C/svg%3E");background-size:220px 220px;background-attachment:fixed}
+h1,h2,h3,.brand,.dayhead h2,.sec-head h2,.panel h3,.card-h .en{font-family:"Mali","IBM Plex Sans Thai",var(--f-latin);font-weight:700;letter-spacing:0}
+.eyebrow{font-family:"Mali",var(--f-latin);letter-spacing:.06em;color:var(--accent)}
+.top{background:color-mix(in srgb,#FFF8EE 90%,transparent);border-bottom:2px dashed #FFC2D1}
+.brand .han{color:var(--accent)}
+.hero{background:linear-gradient(135deg,#FF8FAB 0%,#FFB36B 55%,#FFD23F 100%);color:#2E2A4A;border:2.5px solid var(--ink);box-shadow:5px 5px 0 var(--ink);border-radius:24px}
+.hero p,.hero .meta{color:#2E2A4A}.hero .meta b,.countdown b{color:#3D348B}
+.hero::after{content:"🍁 ✨ 🎄 ⭐";position:absolute;right:16px;top:12px;font-size:22px;letter-spacing:6px;opacity:.9;transform:rotate(-6deg)}
+.panel,.card{border:2px solid var(--ink);box-shadow:3px 3px 0 #FFC2D1}
+.stop.is-must .card{border-color:var(--ink);box-shadow:3px 3px 0 #FFD9A8}
+.stop.is-fixed .card{border-color:var(--ink);box-shadow:3px 3px 0 #FFB3C6}
+.stop.is-minor .card{background:#FFFFFFB3;border:2px dashed #C9C2E8;box-shadow:none}
+.card.now{box-shadow:4px 4px 0 var(--leaf)!important}
+.stop::after{width:12px;height:12px;left:53px;border-color:var(--ink);background:#FFF}
+.stop.is-must::after{background:#FFD23F;border-color:var(--ink)}
+.stop.is-fixed::after{background:var(--accent);border-color:var(--ink)}
+.pill{border:1.5px solid var(--ink);border-radius:999px;font-family:"Mali","IBM Plex Sans Thai",sans-serif;font-weight:600}
+.p-walk{background:#D9F7F2;color:#0E6E64}
+.p-fixed{background:#FFD6E0;color:#B0234A}
+.btn{border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink);font-weight:600;transition:transform .1s,box-shadow .1s}
+.btn:active{transform:translate(2px,2px);box-shadow:0 0 0 var(--ink)}
+.btn.primary{background:var(--accent);color:#fff}
+.daybar button{border:2px solid var(--ink);border-radius:16px;box-shadow:2px 2px 0 #FFC2D1}
+.bottom-nav{border-top:2px dashed #FFC2D1}
+.note,.info{border-radius:16px;border:2px dashed #FFC2D1}
+details.igd summary{font-family:"Mali",sans-serif}
+.daybar button[aria-selected="true"]{border-color:var(--ink);box-shadow:2px 2px 0 var(--ink)}
+.tabs-desk button[aria-selected="true"]{border:2px solid var(--ink)}
 </style>
 
 <header class="top">
@@ -553,12 +583,12 @@ function drawLeaves(){
   const ctx=c.getContext("2d");const dpr=Math.min(2,window.devicePixelRatio||1);
   const W=c.clientWidth,H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;ctx.scale(dpr,dpr);
   const rnd=(a,b)=>a+Math.random()*(b-a);
-  const cols=["#C7A56B","#D9A93C","#B98A2E","#8C3A3F","#A45A3B"];
+  const cols=["#FFFFFF","#FFF3B0","#FF5C82","#8E6CEF","#2EC4B6"];
   const leaves=Array.from({length:Math.round(W/22)},()=>({x:rnd(0,W),y:rnd(-H,H),s:rnd(7,16),r:rnd(0,6.28),vr:rnd(-.02,.02),vy:rnd(.25,.7),sw:rnd(0,6.28),c:cols[Math.floor(rnd(0,cols.length))]}));
   function leaf(l){ctx.save();ctx.translate(l.x+Math.sin(l.sw)*8,l.y);ctx.rotate(l.r);ctx.fillStyle=l.c;ctx.globalAlpha=.75;
     ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,l.s,-Math.PI*.85,-Math.PI*.15);ctx.closePath();ctx.fill();
     ctx.globalAlpha=.5;ctx.strokeStyle=l.c;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(0,l.s*.5);ctx.stroke();ctx.restore()}
-  function bg(){const g=ctx.createLinearGradient(0,0,W,H);g.addColorStop(0,"#2A1E1C");g.addColorStop(.6,"#3B2422");g.addColorStop(1,"#4A3A28");ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
+  function bg(){const g=ctx.createLinearGradient(0,0,W,H);g.addColorStop(0,"#FF8FAB");g.addColorStop(.55,"#FFB36B");g.addColorStop(1,"#FFD23F");ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
   const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   function frame(){bg();for(const l of leaves){if(!reduce){l.y+=l.vy;l.r+=l.vr;l.sw+=.01;if(l.y>H+20){l.y=-20;l.x=rnd(0,W)}}leaf(l)}if(!reduce&&!document.getElementById("v-overview").hidden)leafRAF=requestAnimationFrame(frame)}
   frame();
