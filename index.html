@@ -336,7 +336,8 @@ const DAYS=[
    {id:"d3lunch",time:"11:45",end:"13:15",en:"Lunch near City Hall",ko:"굽돌집 서울시청본점",addr:"서울 중구 세종대로14길 18",st:"planned",desc:"เดินจากจองดง 5 นาที · กดขยายดูลิสต์ร้านแถวนี้ พร้อมปุ่ม Naver Map ไปเลือกหน้างานได้"},
    {id:"darak",time:"13:30",end:"14:30",en:"Café Darak — Jeongdong Observatory 13F",ko:"카페 다락 · 정동전망대",addr:"서울 중구 덕수궁길 15, 서소문청사 13층",st:"must",desc:"วันธรรมดาเปิด 13:30–17:30 (ไปก่อนเวลาไม่ได้) · เข้าฟรี มองลงไปเห็นวังด็อกซูกุงทั้งวัง · ปิดวันหยุดนักขัตฤกษ์",photo:"정동전망대 덕수궁 뷰",tag:"정동전망대"},
    {id:"toewha",time:"14:30",end:"14:45",en:"🚇 Subway to Ewha (Line 2, City Hall → Ewha Womans Univ.)",st:"est",desc:"ประมาณ 15 นาที",minor:true,nomap:true},
-   {id:"ewha",time:"14:45",end:"16:00",en:"Ewha Womans University",ko:"이화여자대학교",st:"planned",desc:"ถนนหน้ามหาวิทยาลัย → แคมปัส ECC",photo:"이화여대 가을 ECC",tag:"이화여대"},
+   {id:"ewha",time:"14:45",end:"15:05",en:"Ewha Womans University — main gate & ECC (photo stop)",ko:"이화여자대학교",st:"planned",desc:"แวะถ่ายรูปแค่ประตูหน้าและทางลาด ECC ไม่ต้องเดินเข้าแคมปัส · เดินจากสถานีอีฮวา ทางออก 2–3 ประมาณ 5 นาที",photo:"이화여대 가을 ECC",tag:"이화여대"},
+   {id:"cafedelyon",time:"15:05",end:"16:00",en:"Café de Lyon Ewha — millefeuille & Ossol latte",ko:"카페드리옹 이대점",st:"must",desc:"คาเฟ่ 3 ชั้น ใกล้สถานีอีฮวาทางออก 3 · ขึ้นชื่อมิลเฟยวานิลลาและ 오쏠라떼 (ลาเต้นมโอ๊ตใส่เกลือ) · ร้านจากลิสต์ Naver ที่เซฟไว้",sources:[["Naver Map · 카페드리옹 이대점","https://map.naver.com/p/entry/place/2017561412"]]},
    {id:"toyeonnam",time:"16:00",end:"16:15",en:"🚇 Subway to Hongik Univ. (Line 2, 2 stops) → Yeonnam",st:"est",desc:"ประมาณ 10 นาที",minor:true,nomap:true},
    {id:"yeonnam",time:"16:15",end:"18:00",en:"Yeonnam-dong · Gyeongui Line Forest Park",ko:"연남동 · 경의선숲길",st:"planned",desc:"เดินเล่นและแวะร้านในยอนนัมดงได้นานขึ้น ดูพระอาทิตย์ตก (ประมาณ 17:20) แล้วเดินต่อไปฮงแด",photo:"경의선숲길 가을",tag:"경의선숲길"},
    {id:"hongdae",time:"18:00",end:"20:30",en:"Hongdae shopping · dinner · evening walk",ko:"홍대",st:"must",desc:"มื้อเย็นตัวเลือกหลัก: 홍스쭈꾸미 홍대본점 🐟🐷 หรือ 홍익게장 홍대본점 🐟 · กดขยายดูลิสต์ร้านแถวนี้ พร้อมปุ่ม Naver Map ไปเลือกหน้างานได้ · กลับโรงแรม Line 2 ตรงถึง 을지로입구",photo:"홍대 밤거리",tag:"홍대",sources:[["Naver Map · 홍스쭈꾸미","https://map.naver.com/p/entry/place/12785328"],["Naver Map · 홍익게장","https://map.naver.com/p/entry/place/36624750"]]}
@@ -352,8 +353,7 @@ const DAYS=[
    {id:"seoulforest",time:"12:30",end:"13:45",en:"Seoul Forest — ginkgo road + tall ginkgo grove (gate 9)",ko:"서울숲 은행나무길 · 은행나무숲",st:"must",desc:"ถนนแปะก๊วยใบร่วงเป็นพรม · ป่าต้นสูงที่ประตู 9 เหลืองช้ากว่า",photo:"서울숲 은행나무숲",tag:"서울숲"},
    {id:"greenlab",time:"13:45",end:"15:00",en:"Green Lab — 2F window onto the forest",ko:"그린랩",addr:"서울 성동구 서울숲2길 18-11",st:"must",desc:"เปิดพุธ–อาทิตย์ 12:00–19:00",photo:"그린랩 서울숲",tag:"그린랩"},
    {id:"ttukseom",time:"15:05",end:"15:50",en:"Ttukseom Hangang Park — Han River",ko:"뚝섬한강공원",st:"must",desc:"เดินจาก Seoul Forest ข้ามสะพานคนเดินประมาณ 10 นาที",photo:"뚝섬한강공원 가을",tag:"뚝섬한강공원"},
-   {id:"seongsushop",time:"16:00",end:"17:00",en:"Seongsu shopping — Yeonmujang-gil",ko:"성수 연무장길",st:"must",desc:"ป๊อปอัปและคอนเซ็ปต์สโตร์",photo:"성수 연무장길 팝업",tag:"연무장길"},
-   {id:"cloudbridge",time:"17:00",end:"17:30",en:"Seongsu Cloud Bridge — sunset",ko:"성수구름다리",st:"must",desc:"สถานี 서울숲 ทางออก 3 เดินประมาณ 5 นาที พระอาทิตย์ตกราว 17:20",photo:"성수구름다리 노을",tag:"성수구름다리"},
+   {id:"seongsushop",time:"16:00",end:"17:30",en:"Seongsu shopping — Yeonmujang-gil",ko:"성수 연무장길",st:"must",desc:"ป๊อปอัปและคอนเซ็ปต์สโตร์",photo:"성수 연무장길 팝업",tag:"연무장길"},
    {id:"seongsu",time:"17:30",end:"19:00",en:"Seongsu — cafés, shopping and dinner",ko:"성수동 카페거리",st:"fixed",must:true,desc:"จุดจบของวัน · กลับโรงแรมสาย 2 จากสถานี 성수 ตรงถึง 을지로입구 ประมาณ 20 นาที · มื้อเย็นแถวซองซู: กดขยายดูลิสต์ร้านแถวนี้ พร้อมปุ่ม Naver Map ไปเลือกหน้างานได้",photo:"성수동 카페 거리",tag:"성수동"}
   ]},
  {n:5,date:"2026-11-14",dow:"เสาร์",dshort:"14 พ.ย.",title:"Gimpo Outlet & The Hyundai Christmas Village",th:"เอาท์เล็ตกิมโป · คริสต์มาสวิลเลจ เดอะฮุนได",ko:"김포 아울렛 · 더현대 크리스마스",
@@ -376,6 +376,8 @@ const IG={
  seoulforest:[["p/DCOxucNvO77","@liebepetty","ทางเดินในโซลฟอเรสต์ แสงเย็นช่วงใบไม้เปลี่ยนสี"]],
  seongsu:[["p/DDMlEaVv29V","@liebepetty","ถนนอาชาซันโร ย่านซองซู"]],
  samcheong:[["p/CkVN1_7Pn34","@henryjoo3","ถนนซัมชองดง เดินได้ทั้งกลางวัน กลางคืน และวันฝนตก"]],
+ greenlab:[["p/CTR4zIzPYF3","Green Lab","คาเฟ่/พื้นที่พักผ่อนริมโซลฟอเรสต์ หน้าต่างมองเห็นป่า"],["p/CEQPmacJbZ2","Green Lab","มุมอ่านหนังสือ บรรยากาศเงียบ"]],
+ cafedelyon:[["p/DR_tXFjESLV","Café de Lyon Ewha","สาขาอีฮวา 3 ชั้น ใกล้ทางออก 3"],["p/DSAUuJmj0cK","Café de Lyon Ewha","เค้กและมิลเฟย"]],
  hyoja:[["p/DeR52FMEpaN","@liebepetty","ถนนฮโยจาโร กำแพงวังคยองบกกุงฝั่งตะวันตกใต้ต้นกิงโกะ"]],
  hyundaixmas:[["p/De3vrLCEk-V","@liebepetty","สวนริมแม่น้ำฮันยออีโด พ.ย. 2025 · อยู่ไม่ไกลจาก The Hyundai ถ้าเหลือเวลาเดินไปดูพระอาทิตย์ตกได้"]]
 };
@@ -793,7 +795,7 @@ function renderMap(){
     :DAYS.filter(d=>mapF==="all"||String(d.n)===mapF).map(d=>{const ss=d.stops.filter(s=>s.ko&&!s.nomap);
       return `<div class="mapday"><h3>Day ${d.n} · ${d.dshort} <span class="han muted" style="font-size:14px;font-weight:500">${esc(d.ko)}</span></h3><ol class="seq">${ss.map((s,i)=>seqHTML(s,i)).join("")}</ol></div>`}).join("")}
   <div class="panel" style="margin-top:8px"><h3>เรื่องเดินทาง</h3>
-   <p style="margin:0;font-size:14px">ที่พัก ibis Ambassador Myeongdong / Skypark Myeongdong ใกล้สถานี 을지로입구 (สาย 2 สีเขียว) · ออกเดินทาง 09:00 ทุกวัน · เดินทางด้วยรถไฟใต้ดินเป็นหลัก (🚇) นั่งแท็กซี่ (🚕) เฉพาะช่วงที่เวลาแน่น หน้างานถ้าเลทค่อยเรียกแท็กซี่ เวลาเดินทางเป็นค่าประมาณ · วันที่ 1 มีรถรับจากสนามบิน ฝากกระเป๋าที่โรงแรมก่อน · วันที่ 2 อันกุก → วอนซอดง → SangGuk แล้วแท็กซี่ข้ามไปฮโยจาโร → จบที่จงโน 3-กา · วันที่ 3 นัมซาน → จองดง → อีฮวา → ฮงแด (ตะวันออก → ตะวันตก) · วันที่ 4 โอลิมปิกพาร์ก → โซลฟอเรสต์ → ซองซู (จบที่ซองซู) · วันที่ 5 เอาท์เล็ตกิมโป → ยออีโด</p>
+   <p style="margin:0;font-size:14px">ที่พัก ibis Ambassador Myeongdong / Skypark Myeongdong ใกล้สถานี 을지로입구 (สาย 2 สีเขียว) · ออกเดินทาง 09:00 ทุกวัน · เดินทางด้วยรถไฟใต้ดินเป็นหลัก (🚇) นั่งแท็กซี่ (🚕) เฉพาะช่วงที่เวลาแน่น หน้างานถ้าเลทค่อยเรียกแท็กซี่ เวลาเดินทางเป็นค่าประมาณ · วันที่ 1 มีรถรับจากสนามบิน ฝากกระเป๋าที่โรงแรมก่อน · วันที่ 2 อันกุก → วอนซอดง → SangGuk แล้วแท็กซี่ข้ามไปฮโยจาโร → จบที่จงโน 3-กา · วันที่ 3 นัมซาน → จองดง → อีฮวา (แค่ประตูหน้า) + Café de Lyon → ฮงแด (ตะวันออก → ตะวันตก) · วันที่ 4 โอลิมปิกพาร์ก → โซลฟอเรสต์ → ซองซู (จบที่ซองซู) · วันที่ 5 เอาท์เล็ตกิมโป → ยออีโด</p>
   </div>`;
 }
 function seqHTML(s,i){return `<li><div class="num">${i+1}</div><div class="body">
