@@ -1,0 +1,796 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Seoul Autumn 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Noto+Serif+KR:wght@500;700;900&display=swap">
+<style>
+/* Layout: editorial trip journal — sticky day rail, timeline cards, bottom nav on phones, top nav on desktop */
+:root{
+  --ivory:#F7F4EF; --burgundy:#722F37; --brown:#795548; --forest:#475746; --charcoal:#252525; --gold:#C7A56B;
+  --bg:#F7F4EF; --surface:#FFFDF9; --sunk:#EFEAE2; --fg:#252525; --muted:#6B625A; --line:#DDD5C9;
+  --accent:#722F37; --accent-fg:#FFFDF9; --leaf:#475746; --bark:#795548; --gilt:#9A7A3E; --gilt-soft:#F1E6CF;
+  --warn-bg:#F6E7D3; --warn-fg:#6E4317; --ok:#3F6B45;
+  --f-body:"IBM Plex Sans Thai","DM Sans",system-ui,sans-serif;
+  --f-latin:"DM Sans","IBM Plex Sans Thai",system-ui,sans-serif;
+  --f-han:"Noto Serif KR","Apple SD Gothic Neo","Malgun Gothic",serif;
+  --r:10px; --nav-h:64px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#1B1817; --surface:#24201E; --sunk:#2D2826; --fg:#F1ECE4; --muted:#B3A99D; --line:#3D3633;
+  --accent:#C9727C; --accent-fg:#1B1817; --leaf:#93A891; --bark:#C49A86; --gilt:#D8B97F; --gilt-soft:#3A3122;
+  --warn-bg:#3B2C1C; --warn-fg:#EBC593; --ok:#8FBF95; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#1B1817; --surface:#24201E; --sunk:#2D2826; --fg:#F1ECE4; --muted:#B3A99D; --line:#3D3633;
+  --accent:#C9727C; --accent-fg:#1B1817; --leaf:#93A891; --bark:#C49A86; --gilt:#D8B97F; --gilt-soft:#3A3122;
+  --warn-bg:#3B2C1C; --warn-fg:#EBC593; --ok:#8FBF95; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:0 calc(var(--nav-h) + 32px)}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.25}
+a{color:var(--accent)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gilt);outline-offset:2px}
+.han{font-family:var(--f-han)}
+.latin{font-family:var(--f-latin)}
+.eyebrow{font:600 11.5px/1 var(--f-latin);letter-spacing:.14em;text-transform:uppercase;color:var(--gilt)}
+.muted{color:var(--muted)}
+.tnum{font-variant-numeric:tabular-nums}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:1080px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:16px}
+.brand{display:flex;align-items:baseline;gap:8px;font-weight:700;font-family:var(--f-latin);white-space:nowrap}
+.brand .han{color:var(--accent);font-size:18px}
+.tabs-desk{display:none;gap:4px;margin-left:auto}
+.tabs-desk button{background:none;border:0;padding:8px 12px;border-radius:999px;cursor:pointer;color:var(--muted);font-weight:500}
+.tabs-desk button[aria-selected="true"]{background:var(--accent);color:var(--accent-fg)}
+.bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom,0px)}
+.bottom-nav button{background:none;border:0;padding:8px 2px 9px;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11.5px;color:var(--muted);cursor:pointer;min-height:var(--nav-h)}
+.bottom-nav svg{width:22px;height:22px}
+.bottom-nav button[aria-selected="true"]{color:var(--accent);font-weight:600}
+@media (min-width:860px){.tabs-desk{display:flex}.bottom-nav{display:none}.wrap{padding-block:0 56px}}
+
+section.view{padding-top:20px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px;margin:8px 0 16px}
+.sec-head h2{font-size:24px}
+
+/* hero */
+.hero{position:relative;border-radius:16px;overflow:hidden;background:var(--charcoal);color:#F7F4EF;padding:28px 22px 24px;isolation:isolate}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1;opacity:.95}
+.hero .han-big{font-family:var(--f-han);font-weight:900;font-size:clamp(46px,12vw,96px);line-height:1;letter-spacing:-.02em;color:#F7F4EF}
+.hero .han-big span{color:var(--gold)}
+.hero p{max-width:52ch;margin:10px 0 0;color:#E8E1D6}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;font-family:var(--f-latin);font-size:13.5px;color:#E8E1D6}
+.hero .meta b{color:#fff}
+.countdown{display:inline-flex;align-items:baseline;gap:6px;margin-top:16px;background:rgba(247,244,239,.12);border:1px solid rgba(199,165,107,.5);padding:6px 12px;border-radius:999px;font-size:13.5px}
+.countdown b{font:700 20px var(--f-latin);color:var(--gold)}
+
+.grid2{display:grid;gap:16px;grid-template-columns:1fr}
+@media (min-width:860px){.grid2{grid-template-columns:1.25fr 1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;min-width:0}
+.panel h3{font-size:17px;margin-bottom:10px}
+
+.day-list{display:grid;gap:0}
+.day-row{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line);cursor:pointer;background:none;border-left:0;border-right:0;border-bottom:0;text-align:left;width:100%}
+.day-row:first-child{border-top:0}
+.dno{font:700 12px var(--f-latin);letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.dno b{display:block;font-size:22px;letter-spacing:0;color:var(--fg)}
+.day-row .t{font-weight:600}
+.day-row .s{font-size:13px;color:var(--muted)}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:5px;font:600 11.5px/1 var(--f-body);padding:5px 9px;border-radius:999px;white-space:nowrap}
+.p-fixed{background:var(--accent);color:var(--accent-fg)}
+.p-must{background:var(--gilt-soft);color:var(--gilt);border:1px solid var(--gilt)}
+.p-proposed{background:var(--warn-bg);color:var(--warn-fg)}
+.p-tbc{background:var(--sunk);color:var(--muted);border:1px dashed var(--line)}
+.p-est{background:var(--sunk);color:var(--muted)}
+.p-planned{background:transparent;color:var(--leaf);border:1px solid var(--leaf)}
+
+.adgrid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.adday{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:0 0 14px;display:flex;flex-direction:column;gap:10px;overflow:hidden;min-width:0}
+.adday>*:not(.adimg){margin-inline:14px}
+.adimg{border:0;padding:0;display:block;aspect-ratio:16/9;max-width:100%;overflow:hidden;cursor:pointer;background:var(--sunk)}
+.adimg img{width:100%;height:100%;object-fit:cover;display:block}
+.adhead{display:grid;grid-template-columns:48px 1fr;gap:10px;align-items:center;padding-top:12px}
+.adhead .t{font-weight:600;line-height:1.3}.adhead .s{font-size:12.5px;color:var(--muted)}
+.adlist{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.adlist li{display:grid;grid-template-columns:44px 1fr;gap:8px;font-size:14px;align-items:baseline}
+.adlist .at{font:600 12.5px var(--f-latin);color:var(--muted)}
+.adlist .an{background:none;border:0;padding:3px 0;text-align:left;cursor:pointer;color:var(--fg);line-height:1.35}
+.adlist .an:hover{color:var(--accent)}
+.adlist li.mn .an{color:var(--muted);font-size:13px}
+.adlist li.dn .an{text-decoration:line-through;color:var(--muted)}
+.adlist .pill{padding:2px 6px;font-size:10.5px;vertical-align:1px}
+.note{background:var(--warn-bg);color:var(--warn-fg);border-radius:var(--r);padding:12px 14px;font-size:14px}
+.note b{display:block;margin-bottom:2px}
+.info{background:var(--sunk);border-radius:var(--r);padding:12px 14px;font-size:14px}
+
+/* weather */
+.wx{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-top:10px}
+.wx div{background:var(--sunk);border-radius:8px;padding:10px 6px;text-align:center;font-size:12px;min-width:0}
+.wx b{display:block;font:700 15px var(--f-latin)}
+.wx span{display:block;color:var(--muted);font-size:11px;margin-top:4px}
+.clim{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:6px;font-size:14px}
+.clim li{display:flex;gap:10px;justify-content:space-between;border-bottom:1px dotted var(--line);padding-bottom:6px}
+.clim li span:last-child{text-align:right;font-weight:600}
+
+/* day selector */
+.daybar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 53px);z-index:15;background:var(--bg);padding:10px 0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.daybar::-webkit-scrollbar{display:none}
+.daybar button{flex:1 0 auto;min-width:64px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:7px 10px;cursor:pointer;text-align:center;line-height:1.2}
+.daybar button small{display:block;font:600 10.5px var(--f-latin);letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.daybar button b{font:700 17px var(--f-latin)}
+.daybar button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.daybar button[aria-selected="true"] small{color:var(--accent-fg);opacity:.85}
+
+.dayhead{display:grid;gap:6px;margin:6px 0 14px}
+.dayhead h2{font-size:clamp(22px,4.5vw,30px)}
+.dayhead .theme-ko{font-family:var(--f-han);color:var(--bark);font-size:15px}
+.tools{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;cursor:pointer;font-size:13.5px;font-weight:500;text-decoration:none;color:var(--fg);min-height:38px}
+.btn:hover{border-color:var(--gilt)}
+.btn.primary{background:var(--forest);border-color:var(--forest);color:#F7F4EF}
+:root[data-theme="dark"] .btn.primary{background:var(--leaf);border-color:var(--leaf);color:#1B1817}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .btn.primary{background:var(--leaf);border-color:var(--leaf);color:#1B1817}}
+.btn.naver{background:#03C75A;border-color:#03C75A;color:#fff;font-weight:600}
+.btn svg{width:16px;height:16px}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:58px;top:8px;bottom:8px;width:1px;background:var(--line)}
+.stop{display:grid;grid-template-columns:50px 1fr;gap:17px;padding:6px 0;position:relative}
+.stop .time{font:600 13px var(--f-latin);text-align:right;padding-top:14px;color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+.stop .time small{display:block;font-weight:400;font-size:11.5px}
+.stop::after{content:"";position:absolute;left:54px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:2px solid var(--muted)}
+.stop.is-must::after{background:var(--gilt);border-color:var(--gilt)}
+.stop.is-fixed::after{background:var(--accent);border-color:var(--accent)}
+.stop.is-done .card{opacity:.6}
+.stop.is-done::after{background:var(--ok);border-color:var(--ok)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);min-width:0}
+.stop.is-must .card{border-color:color-mix(in srgb,var(--gilt) 55%,var(--line))}
+.stop.is-fixed .card{border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+.stop.is-minor .card{background:transparent;border-style:dashed}
+.card-h{display:flex;gap:10px;align-items:flex-start;padding:12px 12px 12px 14px;cursor:pointer;background:none;border:0;width:100%;text-align:left}
+.card-h .txt{flex:1;min-width:0}
+.card-h .en{font-weight:600;font-family:var(--f-latin);font-size:15.5px}
+.card-h .ko{font-family:var(--f-han);font-size:13.5px;color:var(--bark)}
+.card-h .pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.hthumb{width:56px;height:56px;border-radius:8px;object-fit:cover;flex:none}
+.strip{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-14px;padding-inline:14px;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.strip button{flex:0 0 78%;max-width:340px;aspect-ratio:4/3;border:0;padding:0;border-radius:8px;overflow:hidden;scroll-snap-align:start;cursor:pointer;background:var(--sunk)}
+.strip img{width:100%;height:100%;object-fit:cover;display:block}
+.chev{width:18px;height:18px;flex:none;margin-top:3px;transition:transform .2s;color:var(--muted)}
+.card[data-open="true"] .chev{transform:rotate(180deg)}
+.card-b{padding:0 14px 14px;display:grid;gap:12px}
+.card-b p{margin:0}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.toggles{display:flex;flex-wrap:wrap;gap:8px}
+.chk{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer;font-size:13.5px;min-height:38px;background:var(--surface)}
+.chk[aria-pressed="true"]{background:var(--sunk);border-color:var(--gilt)}
+.chk svg{width:16px;height:16px}
+textarea{width:100%;min-height:68px;border:1px solid var(--line);border-radius:8px;background:var(--bg);padding:8px 10px;resize:vertical}
+.daynotes{margin-top:18px;display:grid;gap:10px}
+.photo-hint{font-size:13px;color:var(--muted)}
+
+/* gallery */
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.fchip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;cursor:pointer;font-size:13px;min-height:36px}
+.fchip[aria-pressed="true"]{background:var(--charcoal);border-color:var(--charcoal);color:#F7F4EF}
+:root[data-theme="dark"] .fchip[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .fchip[aria-pressed="true"]{background:var(--fg);color:var(--bg)}}
+.gal{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr))}
+.tile{border-radius:var(--r);overflow:hidden;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;min-width:0}
+.cover{position:relative;aspect-ratio:4/3;max-width:100%;cursor:pointer;border:0;padding:0;width:100%;display:block;overflow:hidden}
+.cover img{width:100%;height:100%;object-fit:cover;display:block}
+.cover .ph{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;text-align:left;color:#F7F4EF}
+.cover .ph .k{font-family:var(--f-han);font-weight:900;font-size:30px;line-height:1.1;opacity:.95}
+.cover .ph .lab{font:600 10.5px var(--f-latin);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:auto}
+.cover .count{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.55);color:#fff;font:600 11px var(--f-latin);padding:3px 8px;border-radius:999px}
+.tile-b{padding:12px 14px;display:grid;gap:8px;flex:1}
+.tile-b .en{font-weight:600;font-family:var(--f-latin)}
+.tile-b code{font-family:var(--f-han);font-size:12.5px;background:var(--sunk);padding:2px 6px;border-radius:5px;overflow-wrap:anywhere}
+.links{display:flex;flex-wrap:wrap;gap:6px}
+.links a,.links button,.links label{font-size:12.5px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);text-decoration:none;color:var(--fg);background:var(--bg);cursor:pointer;min-height:32px;display:inline-flex;align-items:center}
+.links a:hover{border-color:var(--gilt)}
+input[type=file]{display:none}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:60;background:rgba(15,12,11,.94);color:#F7F4EF;display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 12px) 16px calc(env(safe-area-inset-bottom,0px) + 16px)}
+.lb-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.lb-top b{font-family:var(--f-latin)}
+.lb-x{background:rgba(255,255,255,.1);border:0;color:#fff;border-radius:999px;width:42px;height:42px;font-size:22px;cursor:pointer}
+.lb-stage{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;margin:12px 0;touch-action:pan-y}
+.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px}
+.lb-card{max-width:560px;text-align:center}
+.lb-card .k{font-family:var(--f-han);font-weight:900;font-size:clamp(40px,10vw,72px);line-height:1.1;color:var(--gold)}
+.lb-card p{color:#D9D2C6}
+.lb-nav{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.lb-nav button{background:rgba(255,255,255,.1);border:0;color:#fff;border-radius:999px;padding:10px 16px;cursor:pointer;min-height:42px}
+.lb .links a{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:#fff}
+.lb-credit{font-size:12.5px;color:#BDB4A7;text-align:center;margin-top:6px}
+
+/* shopping */
+.shop-top{display:grid;gap:12px;grid-template-columns:1fr}
+@media (min-width:860px){.shop-top{grid-template-columns:1fr 320px}}
+.budget{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.budget .n{font:700 22px var(--f-latin);font-variant-numeric:tabular-nums}
+.budget label{font-size:12.5px;color:var(--muted)}
+.field{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--bg);padding:8px 10px;min-height:40px}
+.searchrow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.searchrow .field{flex:1 1 200px;width:auto}
+.items{display:grid;gap:10px}
+.shopgroup h3{font-size:16px;margin:18px 0 8px;display:flex;align-items:baseline;gap:8px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px;display:grid;grid-template-columns:auto 1fr;gap:10px 12px;align-items:start}
+.item.bought{opacity:.62}
+.item.bought .iname{text-decoration:line-through}
+.bigchk{width:24px;height:24px;margin-top:2px;accent-color:var(--forest)}
+.iname{font-weight:600}
+.isub{font-size:13px;color:var(--muted)}
+.irow{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.irow select,.irow input{border:1px solid var(--line);border-radius:8px;background:var(--bg);padding:6px 8px;min-height:36px}
+.irow input.qty{width:62px}
+.irow input.price{width:110px}
+.irow input.inote{flex:1 1 160px}
+.xbtn{background:none;border:0;color:var(--muted);cursor:pointer;margin-left:auto;font-size:13px;min-height:36px}
+.addform{display:grid;gap:8px;grid-template-columns:1fr 1fr;background:var(--sunk);border-radius:var(--r);padding:12px;margin-top:14px}
+.addform .full{grid-column:1/-1}
+
+/* map */
+.mapday{margin-bottom:22px}
+.mapday h3{font-size:17px;margin-bottom:8px;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.seq{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;gap:8px}
+.seq li{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px}
+.seq .num{width:26px;height:26px;border-radius:50%;background:var(--forest);color:#F7F4EF;font:700 12.5px/26px var(--f-latin);text-align:center}
+.seq .body{min-width:0;display:grid;gap:6px}
+.seq .ko{font-family:var(--f-han);color:var(--bark);font-size:14px}
+
+.toast{position:fixed;left:50%;bottom:calc(var(--nav-h) + 20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--charcoal);color:#F7F4EF;padding:10px 16px;border-radius:999px;font-size:14px;z-index:80;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.copyfall{width:100%;min-height:160px;margin-top:8px;font-size:12.5px}
+.foot{margin-top:28px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand"><span class="han">서울의 가을</span><span>Seoul Autumn 2026</span></div>
+    <nav class="tabs-desk" role="tablist" aria-label="หมวดหลัก" id="tabsDesk"></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="view" id="v-overview"></section>
+  <section class="view" id="v-itinerary" hidden></section>
+  <section class="view" id="v-gallery" hidden></section>
+  <section class="view" id="v-shopping" hidden></section>
+  <section class="view" id="v-map" hidden></section>
+  <p class="foot">ทริปส่วนตัว 10–14 พ.ย. 2026 · เวลาเป็นเวลาเกาหลี (KST, เร็วกว่าไทย 2 ชม.) · ติ๊ก โน้ต รายการช้อปปิ้ง และรูปที่เพิ่มเอง บันทึกไว้ในเบราว์เซอร์ของเครื่องนี้เท่านั้น ไม่ซิงก์ไปยังเพื่อน</p>
+</main>
+
+<nav class="bottom-nav" role="tablist" aria-label="หมวดหลัก" id="tabsMob"></nav>
+<div id="lightbox" class="lb" hidden role="dialog" aria-modal="true" aria-label="แกลเลอรี"></div>
+<div id="toast" class="toast" hidden></div>
+
+<script>
+(function(){
+"use strict";
+/* ---------- storage (per device) ---------- */
+const KEY="seoul26:";
+function load(k,d){try{const v=localStorage.getItem(KEY+k);return v==null?d:JSON.parse(v)}catch(e){return d}}
+function save(k,v){try{localStorage.setItem(KEY+k,JSON.stringify(v));return true}catch(e){return false}}
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const naver=ko=>"https://map.naver.com/p/search/"+encodeURIComponent(ko);
+const naverImg=q=>"https://search.naver.com/search.naver?where=image&query="+encodeURIComponent(q);
+const googleImg=q=>"https://www.google.com/search?tbm=isch&q="+encodeURIComponent(q);
+const igTag=t=>"https://www.instagram.com/explore/tags/"+encodeURIComponent(t)+"/";
+
+/* ---------- itinerary data (exact schedule from brief) ---------- */
+// status: fixed | must | proposed | tbc | est | planned ; minor = transit/rest rows
+const DAYS=[
+ {n:1,date:"2026-11-10",dow:"อังคาร",dshort:"10 พ.ย.",title:"Arrival, Facial, Bongeunsa & Myeongdong Lights",th:"ถึงโซล · ทำหน้า · บงอึนซา · ไฟคริสต์มาสเมียงดง",ko:"도착 · 봉은사 · 명동 크리스마스",
+  shot:"วัดกลางเมืองตัดกับตึกสูง ชั้นหนังสือยักษ์ ไฟคริสต์มาสและจอไฟหน้าห้างยามค่ำ",
+  notes:[{t:"warn",h:"แก๊งนี้ไม่กินเนื้อวัว (ทั้งทริป)",b:"ตอนสั่งอาหารพูดว่า 소고기 못 먹어요 (กินเนื้อวัวไม่ได้) หรือ 소고기 빼주세요 (ไม่ใส่เนื้อวัว) · ระวังซุปกระดูกวัว (곰탕 · 설렁탕 · 사골) บุลโกกิ และเกี๊ยวที่มักผสมเนื้อ"},{t:"warn",h:"ทำหน้าที่ Mio Clinic 13:00",b:"강남대로 372 ชั้น 2 เดินจากสถานี Gangnam ประมาณ 5 นาที ถามคลินิกก่อนว่าหลังทำต้องเลี่ยงแดดหรือลมกี่วัน วันต่อๆ ไปเดินกลางแจ้งเกือบทั้งวัน"},{t:"info",h:"ที่พักเมียงดง · เดินทาง",b:"ฝากกระเป๋าที่โรงแรมเมียงดงก่อน วันนี้ไปด้วยรถไฟใต้ดินได้ทั้งวัน (สาย 4 → 2) ถ้าเลทก่อนนัดทำหน้าค่อยนั่งแท็กซี่"}],
+  stops:[
+   {id:"icn",time:"06:40",en:"Arrive at Incheon International Airport",ko:"인천국제공항",st:"planned",desc:"เที่ยวบินถึง",minor:true},
+   {id:"imm",time:"06:40",end:"08:15",en:"Immigration and baggage collection",st:"est",desc:"เวลาประมาณการ",minor:true,nomap:true},
+   {id:"xfer",time:"08:15",end:"09:45",en:"Transfer to Myeongdong · drop bags at hotel",st:"est",desc:"ฝากกระเป๋าที่โรงแรมก่อนเช็กอิน",minor:true,nomap:true},
+   {id:"d1brunch",time:"10:00",end:"11:40",en:"Eat in Myeongdong right away — pick one (no beef)",ko:"명동",st:"must",desc:"ถึงเมียงดงฝากกระเป๋าแล้วกินเลย เลือก 1 ร้าน (เดินถึงได้ทุกร้าน): ① Café Onion Myeongdong (어니언 명동) ขนมปัง + กาแฟ แบบเบาๆ ② The Spot Fabulous (더스팟패뷸러스) คาเฟ่ของหวาน 10:00–22:30 มีหน้าต่างวิวถนน ③ Menten (멘텐) ราเมงน้ำซุปไก่ ยังไม่ได้เช็กเวลาเปิดและท็อปปิ้ง ④ Myeongdong Kyoja (명동교자 본점) 10:30–21:00 น้ำซุปไก่ แต่คัลกุกซูโรยเนื้อวัวสับ ต้องบอก '고기 고명 빼주세요' (ไม่ใส่เนื้อ) หรือสั่งบิบิมกุกซู · ตัด Hadongkwan ออกแล้ว (ซุปเนื้อวัว)",photo:"Cafe Onion Myeongdong Seoul",tag:"어니언명동",
+    sources:[["Naver Map · Café Onion","https://map.naver.com/p/search/%EC%96%B4%EB%8B%88%EC%96%B8%20%EB%AA%85%EB%8F%99"],["Naver Map · The Spot Fabulous","https://map.naver.com/p/search/%EB%8D%94%EC%8A%A4%ED%8C%9F%ED%8C%A8%EB%B7%B8%EB%9F%AC%EC%8A%A4%20%EB%AA%85%EB%8F%99"],["Naver Map · Menten","https://map.naver.com/p/search/%EB%A9%98%ED%85%90%20%EB%AA%85%EB%8F%99"],["Naver Map · Myeongdong Kyoja","https://map.naver.com/p/search/%EB%AA%85%EB%8F%99%EA%B5%90%EC%9E%90%20%EB%B3%B8%EC%A0%90"]]},
+   {id:"togangnam",time:"11:45",end:"12:30",en:"🚇 Subway to Gangnam (Line 4 → 2)",st:"est",desc:"ประมาณ 35 นาที · ถ้าเลทค่อยนั่งแท็กซี่ (ประมาณ 30 นาที) · เผื่อเวลาหาคลินิก",minor:true,nomap:true},
+   {id:"facial",time:"13:00",end:"14:30",en:"Facial treatment — Mio Clinic Gangnam",ko:"미오의원",addr:"서울 강남구 강남대로 372, 2층",st:"fixed",desc:"นัด 13:00 · ชั้น 2 · เดินจากสถานี Gangnam ประมาณ 5 นาที · เวลาเสร็จเป็นค่าประมาณ",tag:"미오의원 강남",sources:[["Naver Map · Mio Clinic","https://map.naver.com/p/search/%EB%AF%B8%EC%98%A4%EC%9D%98%EC%9B%90%20%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C%20372"]]},
+   {id:"tobongeun",time:"14:30",end:"14:45",en:"🚇 Subway to Samseong (Line 2, 3 stops)",st:"est",desc:"ประมาณ 15 นาทีรวมเดิน",minor:true,nomap:true},
+   {id:"bongeunsa",time:"14:45",end:"15:45",en:"Bongeunsa Temple",ko:"봉은사",st:"must",desc:"วัดเก่ากลางกังนัม ตรงข้ามโคเอ็กซ์ เปิด 05:00–22:00 เข้าฟรี ย้ายมาจากวันที่ 13",photo:"봉은사 가을 단풍",tag:"봉은사"},
+   {id:"starfield",time:"15:45",end:"16:15",en:"Starfield Library, COEX Mall",ko:"별마당 도서관",st:"must",desc:"เดินข้ามถนนจากวัด นั่งพักได้ ดูว่าตั้งต้นคริสต์มาสแล้วหรือยัง (ปีนี้ยังไม่ประกาศวัน)",photo:"별마당 도서관",tag:"별마당도서관",
+    sources:[["Seoul Media Hub","https://mediahub.seoul.go.kr/archives/1503586"]]},
+   {id:"checkin",time:"16:15",end:"17:45",en:"🚇 Back to Myeongdong · check-in · rest",st:"est",desc:"รถไฟใต้ดินประมาณ 40 นาที (Line 2 → 4)",nomap:true,minor:true},
+   {id:"mdlights",time:"18:00",end:"19:30",en:"Myeongdong Christmas lights · Shinsegae media façade · dinner",ko:"명동 · 신세계 미디어파사드",st:"must",desc:"หนังคริสต์มาสบนจอหน้าห้าง Shinsegae ฉายตั้งแต่ 6 พ.ย. · มื้อเย็นร้านปิ้งย่างที่มีทั้งหมูและวัว (คนไม่กินวัวสั่งหมูได้): ① 다올 숯불구이 명동8길 8-11 เปิด 11:00–23:00 ทุกวัน หมูหมัก 7 วัน + ซี่โครงวัว/ชาดลบักซัล ② 왕비집 명동2호점 명동9길 13 มีทั้งหมูสามชั้นและเนื้อวัว พนักงานย่างให้",photo:"신세계 미디어파사드 크리스마스",tag:"신세계미디어파사드",sources:[["Naver Map · 다올 숯불구이","https://map.naver.com/p/search/%EB%8B%A4%EC%98%AC%EC%88%AF%EB%B6%88%EA%B5%AC%EC%9D%B4%20%EB%AA%85%EB%8F%99"],["Naver Map · 왕비집 명동2호점","https://map.naver.com/p/search/%EC%99%95%EB%B9%84%EC%A7%91%20%EB%AA%85%EB%8F%992%ED%98%B8%EC%A0%90"]]},
+   {id:"daiso",time:"19:30",end:"21:00",en:"Daiso Myeongdong · Olive Young flagship",ko:"다이소 명동역점 · 올리브영 명동",st:"must",desc:"เดินจากโรงแรม · Daiso สถานีเมียงดง เปิด 10:00–22:00 · Olive Young เมียงดง เปิด 10:00–22:30 ช้อปเสร็จเดินกลับได้เลย",photo:"다이소 명동역점",tag:"다이소명동"}
+  ]},
+ {n:2,date:"2026-11-11",dow:"พุธ",dshort:"11 พ.ย.",title:"Seochon, Palaces, Myeongnyundang & Red Tents",th:"ซอชน · เคียงบกกุง · บุกชน · มยองนยุนดัง · เต็นท์แดง",ko:"서촌 · 경복궁 · 북촌 · 명륜당 · 포장마차",
+  shot:"ต้นกิงโกะสีทอง สถาปัตยกรรมวัง วิวพระราชวังจากดาดฟ้า และร้านอาหารริมทางยามค่ำ",
+  notes:[{t:"info",h:"เวลาที่ล็อกไว้",b:"Café SangGuk 16:00 แล้วตามด้วยเต็นท์แดงที่จงโน 3-กา อย่าสลับลำดับสองจุดนี้"},{t:"info",h:"เส้นทางไปทางเดียว ตะวันตก → ตะวันออก",b:"ซอชน → เคียงบกกุง (เข้าประตูตะวันตก ออกประตูตะวันออก) → ซัมชองดง → บุกชน → วอนซอดง → จงโน · มยองนยุนดังอยู่หลังวังฝั่งตะวันออก ต้องนั่งแท็กซี่ไปกลับ (ไป 7 นาที กลับ 7 นาที) เพราะ SangGuk ล็อกไว้ 16:00 และหลังจากนั้นฟ้ามืดแล้ว"},{t:"info",h:"ความเหลืองของแปะก๊วย (เช็ก 5–7 พ.ย.)",b:"มยองนยุนดัง: 6 พ.ย. ยังไม่เหลืองเต็มที่ น่าจะพีคราววันนี้ · ฮโยจาโร: เหลืองเต็มแล้ว 6 พ.ย. วันนี้น่าจะเริ่มร่วงเป็นพรม · แปะก๊วยหน้าประตูชางด็อกกุง: เหลืองปนเขียว"}],
+  stops:[
+   {id:"tohyoja",time:"08:45",end:"09:00",en:"🚇 Subway to Gyeongbokgung Station exit 5",st:"est",desc:"ประมาณ 20 นาที (Line 4 → 3 เปลี่ยนที่ Chungmuro)",minor:true,nomap:true},
+   {id:"gogungginkgo",time:"09:00",end:"09:20",en:"Giant ginkgo — National Palace Museum courtyard",ko:"국립고궁박물관 은행나무 쉼터",addr:"서울 종로구 효자로 12",st:"must",desc:"สถานีคยองบกกุง (สาย 3) ทางออก 5 เดินออกมาเจอลานหน้าพิพิธภัณฑ์เลย ไม่ต้องซื้อตั๋ววัง · ต้นแปะก๊วยอายุราว 100 ปี มีม้านั่งวงกลมรอบต้น · IG 6 พ.ย. เหลืองเต็มต้น ใบเริ่มร่วงเป็นพรม · ฤดูใบไม้ร่วงใช้เป็นที่จัดงานแต่งงาน (โครงการ 고결) ถ้าเจอพิธีอยู่ให้ถ่ายจากด้านนอก",photo:"국립고궁박물관 은행나무",tag:"고궁박물관은행나무",sources:[["OhmyNews (พ.ย. 2025)","https://m.ohmynews.com/NWS_Web/Mobile/at_pg.aspx?CNTN_CD=A0003181376"]]},
+   {id:"hyoja",time:"09:20",end:"09:50",en:"Hyoja-ro ginkgo road → Yeongchumun gate",ko:"효자로 은행나무길 · 영추문",st:"must",desc:"เดินขึ้นเหนือเลียบกำแพงตะวันตกของเคียงบกกุงจากลานพิพิธภัณฑ์ ไปตอนเช้าคนยังน้อย แล้วเดินกลับลงมาที่ Staffix ประมาณ 10 นาที",photo:"효자로 은행나무",tag:"효자로은행나무"},
+   {id:"staffix",time:"10:00",end:"11:00",en:"Staffix — ginkgo terrace café",ko:"스태픽스",addr:"서울 종로구 사직로9길 22",st:"must",desc:"เปิด 10:00–21:00 (ปิดวันจันทร์สุดท้ายของเดือน — วันพุธไม่ติด) ไปตอนเปิดจะได้ที่นั่งดีที่สุด · ร้านสำรอง: Camel Coffee (효자로 31) ชั้น 2 วิวประตูวัง หรือ Tailor Coffee",photo:"스태픽스 은행나무",tag:"스태픽스"},
+   {id:"gyeongbok",time:"11:00",end:"12:30",en:"Gyeongbokgung Palace",ko:"경복궁",st:"must",desc:"จาก Staffix เดินไปประตูหลักฝั่งใต้ประมาณ 10 นาที แล้วเดินทะลุออกประตูตะวันออก (건춘문) ไปทางซัมชองดง",photo:"경복궁 가을 단풍",tag:"경복궁"},
+   {id:"samcheong",time:"12:30",end:"14:15",en:"Lunch in Samcheong-dong → Bukchon → Anguk",ko:"삼청동 · 북촌 · 안국",st:"planned",desc:"ยังไม่ได้เลือกร้าน · ออกประตูตะวันออกเคียงบกกุง เดินถนนกำแพงวังขึ้นซัมชองดง → ตัดผ่านบุกชน → เดินลงมาย่านอันกุก (ถนนยุนโบซน 윤보선길 / ถนนคเยดง 계동길) แล้วขึ้นแท็กซี่หน้าสถานีอันกุก",photo:"삼청동 가을",tag:"삼청동"},
+   {id:"tosungkyun",time:"14:20",end:"14:30",en:"🚕 Taxi from Anguk Station to Sungkyunkwan",st:"est",desc:"ประมาณ 7 นาที",minor:true,nomap:true},
+   {id:"sungkyunkwan",time:"14:30",end:"15:30",en:"Sungkyunkwan Myeongnyundang",ko:"성균관 명륜당",st:"must",desc:"ต้นกิงโกะยักษ์ · แดดบ่ายส่องต้นสวย",photo:"성균관 명륜당 은행나무 가을",tag:"명륜당은행나무"},
+   {id:"towonseo",time:"15:35",end:"15:50",en:"🚕 Taxi back to Wonseo-dong",st:"est",desc:"ประมาณ 7 นาที · ลงที่ 창덕궁길",minor:true,nomap:true},
+   {id:"sangguk",time:"16:00",end:"17:30",en:"Café SangGuk",ko:"카페 상국",addr:"서울 종로구 창덕궁길 47-7",st:"fixed",must:true,desc:"ดาดฟ้ามองเห็นวังชางด็อกกุง · เปิดอังคาร–เสาร์ 10:20–21:30 (Visit Seoul)",photo:"카페 상국 창덕궁 뷰",tag:"카페상국",
+    sources:[["Visit Seoul","https://korean.visitseoul.net/restaurants/cafe-sangguk/KOP04yoa2"]]},
+   {id:"changdeok",time:"17:30",end:"18:20",en:"Changdeokgung gate ginkgo → Ikseon-dong",ko:"창덕궁 돈화문 · 익선동",st:"planned",desc:"เดินลงทางใต้ ถ่ายต้นแปะก๊วยหน้าประตู Donhwamun",photo:"창덕궁 가을",tag:"창덕궁"},
+   {id:"pojang",time:"18:30",end:"20:00",en:"Jongno 3-ga Pojangmacha",ko:"종로3가 포장마차 거리",st:"fixed",must:true,desc:"เต็นท์แดงสตรีทฟู้ด · กลับเมียงดงรถไฟใต้ดินหรือแท็กซี่ประมาณ 10–15 นาที",photo:"종로3가 포장마차 거리",tag:"종로3가포차"}
+  ]},
+ {n:3,date:"2026-11-12",dow:"พฤหัสบดี",dshort:"12 พ.ย.",title:"Namsan, Deoksugung, Ewha, Yeonnam & Hongdae",th:"นัมซาน · ด็อกซูกุง · อีฮวา · ยอนนัม · ฮงแด",ko:"남산 · 덕수궁 · 이화 · 연남 · 홍대",
+  shot:"ใบไม้เปลี่ยนสีบนนัมซาน ถนนกำแพงหิน อาคารกระจกของอีฮวา และสวนทางรถไฟเก่ายามเย็น",
+  notes:[{t:"info",h:"ไม่กลับโรงแรมระหว่างวัน · เส้นทางตะวันออก → ตะวันตก",b:"นัมซาน → จองดง → อีฮวา → ยอนนัม → ฮงแด ส่วนใหญ่ใช้รถไฟใต้ดินสาย 2 ต่อจุดได้ · ตัดบ้านฮงนันพาออกแล้ว"},{t:"info",h:"ความเหลืองของใบไม้ (เช็ก 5–7 พ.ย.)",b:"ทอกซูกุง: สีแดงปนเหลือง ใกล้พีค · อีฮวา: สัปดาห์นี้ยังเหลืองปนเขียว"}],
+  stops:[
+   {id:"baekbeom",time:"09:00",end:"09:50",en:"Baekbeom Plaza, Namsan",ko:"백범광장",st:"must",desc:"เดินจากโรงแรมเมียงดง · ใบไม้เปลี่ยนสี กำแพงเมืองเก่า วิวเมือง · ช่วงพีค 8–18 พ.ย. · ย้ายมาจากวันที่ 10",photo:"백범광장 가을 단풍",tag:"백범광장"},
+   {id:"todeoksu",time:"09:50",end:"10:00",en:"🚶 Walk down to Deoksugung",st:"est",desc:"ประมาณ 25 นาที · ถ้าเลทนั่งแท็กซี่ประมาณ 10 นาที",minor:true,nomap:true},
+   {id:"deoksu",time:"10:00",end:"11:00",en:"Deoksugung Palace",ko:"덕수궁",st:"planned",desc:"สีแดงปนเหลือง ใกล้พีค",photo:"덕수궁 가을 단풍",tag:"덕수궁"},
+   {id:"jeongdong",time:"11:00",end:"11:45",en:"Jeongdong-gil autumn foliage street",ko:"정동길",st:"planned",desc:"ถนนข้างกำแพงวัง เดินต่อจากวังได้",photo:"정동길 가을 단풍",tag:"정동길"},
+   {id:"d3lunch",time:"11:45",end:"13:15",en:"Lunch near City Hall — pork & beef BBQ lunch set",ko:"굽돌집 서울시청본점",addr:"서울 중구 세종대로14길 18",st:"planned",desc:"เดินจากจองดง 5 นาที · ร้านปิ้งย่างมีทั้งหมูและวัว พนักงานย่างให้ · ชุดกลางวันซุปกิมจิ+บุลโกกิ · คนไม่กินวัวสั่งหมูสามชั้น/คอหมู",sources:[["Naver Map · 굽돌집","https://map.naver.com/p/search/%EA%B5%BD%EB%8F%8C%EC%A7%91%20%EC%84%9C%EC%9A%B8%EC%8B%9C%EC%B2%AD%EB%B3%B8%EC%A0%90"]]},
+   {id:"darak",time:"13:30",end:"14:30",en:"Café Darak — Jeongdong Observatory 13F",ko:"카페 다락 · 정동전망대",addr:"서울 중구 덕수궁길 15, 서소문청사 13층",st:"must",desc:"วันธรรมดาเปิด 13:30–17:30 (ไปก่อนเวลาไม่ได้) · เข้าฟรี มองลงไปเห็นวังด็อกซูกุงทั้งวัง · ปิดวันหยุดนักขัตฤกษ์",photo:"정동전망대 덕수궁 뷰",tag:"정동전망대"},
+   {id:"toewha",time:"14:30",end:"14:45",en:"🚇 Subway to Ewha (Line 2, City Hall → Ewha Womans Univ.)",st:"est",desc:"ประมาณ 15 นาที",minor:true,nomap:true},
+   {id:"ewha",time:"14:45",end:"16:00",en:"Ewha Womans University",ko:"이화여자대학교",st:"planned",desc:"ถนนหน้ามหาวิทยาลัย → แคมปัส ECC",photo:"이화여대 가을 ECC",tag:"이화여대"},
+   {id:"toyeonnam",time:"16:00",end:"16:15",en:"🚇 Subway to Hongik Univ. (Line 2, 2 stops) → Yeonnam",st:"est",desc:"ประมาณ 10 นาที",minor:true,nomap:true},
+   {id:"yeonnam",time:"16:15",end:"18:00",en:"Yeonnam-dong · Gyeongui Line Forest Park",ko:"연남동 · 경의선숲길",st:"planned",desc:"เดินเล่นและแวะร้านในยอนนัมดงได้นานขึ้น ดูพระอาทิตย์ตก (ประมาณ 17:20) แล้วเดินต่อไปฮงแด",photo:"경의선숲길 가을",tag:"경의선숲길"},
+   {id:"hongdae",time:"18:00",end:"20:30",en:"Hongdae shopping · dinner · evening walk",ko:"홍대",st:"must",desc:"มื้อเย็นร้านปิ้งย่างหมู+วัว: 육몽 홍대본점 (양화로16길 19) มีหมูสามชั้น/คอหมู + เนื้อฮันอูและไส้วัว พนักงานย่างให้ คิวยาวช่วงหัวค่ำ · กลับเมียงดงรถไฟใต้ดินหรือแท็กซี่",photo:"홍대 밤거리",tag:"홍대",sources:[["Naver Map · 육몽 홍대본점","https://map.naver.com/p/search/%EC%9C%A1%EB%AA%BD%20%ED%99%8D%EB%8C%80%EB%B3%B8%EC%A0%90"]]}
+  ]},
+ {n:4,date:"2026-11-13",dow:"ศุกร์",dshort:"13 พ.ย.",title:"Olympic Park, Seoul Forest, Ttukseom & Seongsu",th:"โอลิมปิกพาร์ก · โซลฟอเรสต์ · ทุกซอม · ซองซู · อัปกูจอง",ko:"올림픽공원 · 서울숲 · 뚝섬 · 성수 · 압구정",
+  shot:"อุโมงค์กิงโกะสีทอง ป่ากิงโกะต้นสูง ริมแม่น้ำฮัน พระอาทิตย์ตกบนสะพาน และไฟคริสต์มาสหน้าห้าง",
+  notes:[{t:"info",h:"เส้นทาง ตะวันออกเฉียงใต้ → ตะวันตก",b:"โอลิมปิกพาร์ก → Seoul Forest → ทุกซอม → ซองซู → อัปกูจอง ใช้รถไฟใต้ดินเป็นหลัก ช่วงที่เวลาแน่นคือซองซู → อัปกูจอง (ห้างปิด 20:00) ให้นั่งแท็กซี่ ซองซูยังเป็นจุดจบของวันเหมือนเดิม"},{t:"info",h:"ความเหลืองของแปะก๊วย (เช็ก 5–7 พ.ย.)",b:"โอลิมปิกพาร์ก: เหลืองเป็นอุโมงค์ทั้งสาย · Seoul Forest ถนนแปะก๊วย: พีค 5 พ.ย. กำลังร่วงเป็นพรม · ป่าแปะก๊วยต้นสูง (ประตู 9): เหลืองช้ากว่าถนน · ต้นเมทาเซควาเอียยังกำลังเปลี่ยนสี"}],
+  stops:[
+   {id:"toolympic",time:"09:00",end:"09:35",en:"🚇 Subway to Olympic Park",st:"est",desc:"ประมาณ 50 นาที (Line 5) · แท็กซี่ประมาณ 35 นาทีถ้าอยากได้แสงเช้า",minor:true,nomap:true},
+   {id:"olympic",time:"09:35",end:"11:00",en:"Olympic Park ginkgo avenue",ko:"올림픽공원 은행나무길",st:"must",desc:"เหลืองเป็นอุโมงค์ทั้งสายสัปดาห์นี้ · ย้ายมาจากวันที่ 14",photo:"올림픽공원 은행나무길",tag:"올림픽공원"},
+   {id:"d4lunch",time:"11:00",end:"12:00",en:"Lunch near Olympic Park — pork & beef galbi",ko:"봉피양 방이점",st:"planned",desc:"เลือก 1: ① 봉피양 방이점 ร้านซี่โครงหมูย่างเจ้าดัง มีซี่โครงวัว+บะหมี่เย็นด้วย ② 오륜정 (성내로6길 32) ซี่โครงหมูย่าง + ข้าวซุปเนื้อฮันอู · ทั้งสองร้านต่อรถไปโซลฟอเรสต์ได้เลย",nomap:true,sources:[["Naver Map · 봉피양 방이점","https://map.naver.com/p/search/%EB%B4%89%ED%94%BC%EC%96%91%20%EB%B0%A9%EC%9D%B4%EC%A0%90"],["Naver Map · 오륜정","https://map.naver.com/p/search/%EC%98%A4%EB%A5%9C%EC%A0%95%20%EA%B0%95%EB%8F%99"]]},
+   {id:"tosf",time:"12:00",end:"12:30",en:"🚇 Subway to Seoul Forest",st:"est",desc:"ประมาณ 40 นาที · ถ้าเลทนั่งแท็กซี่ประมาณ 25 นาที",minor:true,nomap:true},
+   {id:"seoulforest",time:"12:30",end:"13:45",en:"Seoul Forest — ginkgo road + tall ginkgo grove (gate 9)",ko:"서울숲 은행나무길 · 은행나무숲",st:"must",desc:"ถนนแปะก๊วยใบร่วงเป็นพรม · ป่าต้นสูงที่ประตู 9 เหลืองช้ากว่า",photo:"서울숲 은행나무숲",tag:"서울숲"},
+   {id:"greenlab",time:"13:45",end:"15:00",en:"Green Lab — 2F window onto the forest",ko:"그린랩",addr:"서울 성동구 서울숲2길 18-11",st:"must",desc:"เปิดพุธ–อาทิตย์ 12:00–19:00",photo:"그린랩 서울숲",tag:"그린랩"},
+   {id:"ttukseom",time:"15:05",end:"15:50",en:"Ttukseom Hangang Park — Han River",ko:"뚝섬한강공원",st:"must",desc:"เดินจาก Seoul Forest ข้ามสะพานคนเดินประมาณ 10 นาที",photo:"뚝섬한강공원 가을",tag:"뚝섬한강공원"},
+   {id:"seongsushop",time:"16:00",end:"17:00",en:"Seongsu shopping — Yeonmujang-gil",ko:"성수 연무장길",st:"must",desc:"ป๊อปอัปและคอนเซ็ปต์สโตร์",photo:"성수 연무장길 팝업",tag:"연무장길"},
+   {id:"cloudbridge",time:"17:00",end:"17:30",en:"Seongsu Cloud Bridge — sunset",ko:"성수구름다리",st:"must",desc:"สถานี 서울숲 ทางออก 3 เดินประมาณ 5 นาที พระอาทิตย์ตกราว 17:20",photo:"성수구름다리 노을",tag:"성수구름다리"},
+   {id:"seongsu",time:"17:30",end:"19:00",en:"Seongsu — cafés, shopping and dinner",ko:"성수동 카페거리",st:"fixed",must:true,desc:"จุดจบของวัน · มื้อเย็นปิ้งย่างหมู+วัว เลือก 1: ① 고공 성수본점 (왕십리로8길 10) หมูหนา + เนื้อโทชิซัล/ซี่โครง ย่างให้ ร้านเล็กควรโทรจอง ② 성일정육식당 (아차산로3길 9) ร้านเนื้อติดเขียง ใกล้สถานีตุกซอม มีทั้งหมูและฮันอู",photo:"성수동 카페 거리",tag:"성수동",sources:[["Naver Map · 고공 성수본점","https://map.naver.com/p/search/%EA%B3%A0%EA%B3%B5%20%EC%84%B1%EC%88%98%EB%B3%B8%EC%A0%90"],["Naver Map · 성일정육식당","https://map.naver.com/p/search/%EC%84%B1%EC%9D%BC%EC%A0%95%EC%9C%A1%EC%8B%9D%EB%8B%B9"]]},
+   {id:"apgujeong",time:"19:15",end:"20:00",en:"🚕 Hyundai Apgujeong — outdoor Christmas display",ko:"현대백화점 압구정본점",st:"planned",desc:"แท็กซี่ประมาณ 10 นาที · ต้นคริสต์มาส 13 ม. + โฟโต้โซนหน้าประตูหลัก ตั้งแต่ 1 พ.ย. · ดูได้ช่วงห้างเปิด ห้างปิด 20:00 ต้องถึงก่อน 19:30 · กลับเมียงดงด้วยแท็กซี่ประมาณ 25 นาที",photo:"현대백화점 압구정 크리스마스",tag:"현대백화점크리스마스"}
+  ]},
+ {n:5,date:"2026-11-14",dow:"เสาร์",dshort:"14 พ.ย.",title:"Gimpo Outlet & The Hyundai Christmas Village",th:"เอาท์เล็ตกิมโป · คริสต์มาสวิลเลจ เดอะฮุนได",ko:"김포 아울렛 · 더현대 크리스마스",
+  shot:"ช้อปปิ้งในร่ม หมู่บ้านคริสต์มาสในห้าง และไฟยามค่ำที่ยออีโด",
+  notes:[{t:"warn",h:"ต้องจองรอบ Christmas Village",b:"The Hyundai Seoul ชั้น 5 จัด 10 พ.ย.–31 ธ.ค. เปิด 10:30–19:30 ต้องจองรอบในแอป The Hyundai ก่อน (จองรอบประมาณ 16:00)"},{t:"info",h:"ฝนตกช่วงบ่าย",b:"พยากรณ์ฝนช่วงบ่ายประมาณ 60% ทั้งวันอยู่ในอาคาร"}],
+  stops:[
+   {id:"d5breakfast",time:"09:30",end:"10:15",en:"Breakfast in Myeongdong",st:"tbc",nomap:true,minor:true},
+   {id:"togimpo",time:"10:15",end:"11:00",en:"🚕 Taxi to Hyundai Premium Outlet Gimpo",st:"est",desc:"ประมาณ 45 นาที",minor:true,nomap:true},
+   {id:"gimpo",time:"11:00",end:"15:30",en:"Hyundai Premium Outlet Gimpo",ko:"현대프리미엄아울렛 김포",st:"must",desc:"เปิด 10:30–21:00 ทุกวัน · ช้อปและกินมื้อเที่ยวในเอาท์เล็ต",photo:"현대프리미엄아울렛 김포",tag:"현대아울렛김포"},
+   {id:"toyeouido",time:"15:30",end:"16:00",en:"🚕 Taxi to Yeouido",st:"est",desc:"ประมาณ 30 นาที",minor:true,nomap:true},
+   {id:"hyundaixmas",time:"16:15",end:"18:00",en:"The Hyundai Seoul — Christmas Village 5F",ko:"더현대 서울 크리스마스 빌리지",st:"must",desc:"10 พ.ย.–31 ธ.ค. · 10:30–19:30 · ต้องจองรอบในแอป The Hyundai",photo:"더현대 서울 크리스마스",tag:"더현대크리스마스"},
+   {id:"d5dinner",time:"18:30",end:"20:00",en:"Dinner in Yeouido — pork & beef BBQ",ko:"방돈식당 여의도",st:"planned",desc:"เลือก 1: ① 방돈식당 หมูบ่ม 240 ชม. + ชาดลบักซัลฮันอู มีเซ็ตรวมหมู+วัว ② 여의도 미나리 삼겹 (여의대방로69길 28) หมูสามชั้นมินารี + เนื้อฮันอู · กลับเมียงดงด้วยแท็กซี่ประมาณ 25 นาที",nomap:true,sources:[["Naver Map · 방돈식당","https://map.naver.com/p/search/%EB%B0%A9%EB%8F%88%EC%8B%9D%EB%8B%B9%20%EC%97%AC%EC%9D%98%EB%8F%84"],["Naver Map · 여의도 미나리 삼겹","https://map.naver.com/p/search/%EC%97%AC%EC%9D%98%EB%8F%84%20%EB%AF%B8%EB%82%98%EB%A6%AC%20%EC%82%BC%EA%B2%B9"]]}
+  ]}
+];
+const IG={
+ sangguk:[["p/DQ7PQtSkoZ7","@liebepetty","ต้นกิงโกะอายุร้อยปีในเขตวังชางด็อกกุง มองจากดาดฟ้าร้าน · ภาพนี้ถ่าย 7 พ.ย. 2025 ใบเหลืองเต็มต้น ช่วงเดียวกับที่เราไป"]],
+ sungkyunkwan:[["p/CkzJzzMBB0k","@ployslittleatlas","ต้นกิงโกะคู่ของมยองนยุนดัง ต้นหนึ่งลำต้นหักจากอุบัติเหตุช่วงต้นปี 2022 แต่ทั้งลานยังเหลืองสวยอยู่"]],
+ samcheong:[["p/CkVN1_7Pn34","@henryjoo3","ถนนซัมชองดง เดินได้ทั้งกลางวัน กลางคืน และวันฝนตก"]],
+ hyoja:[["p/DfE8sCskh7d","@gyuya_","รวม 15 จุดใบไม้เปลี่ยนสีในโซล อยู่บนเส้นทาง Day 2 หลายจุด: กำแพงวังคยองบกกุง, ซอชน, อันกุก, บุกชน, กำแพงวังชางด็อกกุง, มยองนยุนดัง, ซัมชองดง"],["reel/DfR1P4HSO5-","Reel","ใบไม้เปลี่ยนสีย่านซอชน ข้างวังคยองบกกุง"]],
+ hyundaixmas:[["p/De3vrLCEk-V","@liebepetty","สวนริมแม่น้ำฮันยออีโด พ.ย. 2025 · อยู่ไม่ไกลจาก The Hyundai ถ้าเหลือเวลาเดินไปดูพระอาทิตย์ตกได้"]]
+};
+const CAN_EMBED=/github\.io$/.test(location.hostname);
+function igBlock(id){const a=IG[id];if(!a)return "";return `<div class="igbox">${a.map(([p,who,note])=>`<p class="photo-hint" style="margin:10px 0 6px"><b>จาก IG ${esc(who)}:</b> ${esc(note)}</p>`+(CAN_EMBED?`<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/${p}/" data-instgrm-version="14" style="max-width:540px;width:100%;margin:0 0 8px"></blockquote>`:`<a class="btn" href="https://www.instagram.com/${p}/" target="_blank" rel="noopener">ดูโพสต์ IG ${esc(who)}</a>`)).join("")}</div>`}
+function igProcess(){if(!CAN_EMBED||!document.querySelector("blockquote.instagram-media"))return;if(window.instgrm){window.instgrm.Embeds.process();return}if(document.getElementById("igjs"))return;const sc=document.createElement("script");sc.id="igjs";sc.async=true;sc.src="https://www.instagram.com/embed.js";document.body.appendChild(sc)}
+if(CAN_EMBED){let igt;new MutationObserver(()=>{clearTimeout(igt);igt=setTimeout(()=>{if(document.querySelector("blockquote.instagram-media:not(.instagram-media-rendered)"))igProcess()},150)}).observe(document.body,{childList:true,subtree:true})}
+const PHOTOS={"hyoja": [{"f": "photos/hyoja-0.jpg", "alt": "ป้ายถนนฮโยจาโร กำแพงวังคยองบกกุงใต้ต้นกิงโกะสีทอง", "by": "IG @liebepetty", "lic": "", "src": "", "t": "photos/t_hyoja-0.jpg"}, {"f": "photos/hyoja-1.jpg", "alt": "แนวต้นกิงโกะเลียบกำแพงวังคยองบกกุง ถนนฮโยจาโร", "by": "IG @liebepetty", "lic": "", "src": "", "t": "photos/t_hyoja-1.jpg"}], "sungkyunkwan": [{"f": "https://commons.wikimedia.org/wiki/Special:FilePath/Sungkyunkwan_Daeseongjeon.jpg?width=1400", "alt": "แทซองจอน ศาลเจ้าขงจื๊อในเขตมุนมโย ซองกยุนกวาน (อาคารคนละหลังกับมยองนยุนดัง)", "by": "Junganghansik", "lic": "CC BY 3.0", "src": "https://commons.wikimedia.org/wiki/File:Sungkyunkwan_Daeseongjeon.jpg", "t": "https://commons.wikimedia.org/wiki/Special:FilePath/Sungkyunkwan_Daeseongjeon.jpg?width=420"}, {"f": "photos/sungkyunkwan-1.jpg", "alt": "ลานหน้าแทซองจอน ซองกยุนกวาน", "by": "Christian Bolz", "lic": "CC BY-SA 3.0", "src": "https://commons.wikimedia.org/wiki/File:Shrine_of_Confucius_%EB%8C%80%EC%84%B1%EC%A0%84.jpg", "t": "photos/t_sungkyunkwan-1.jpg"}], "gyeongbok": [{"f": "photos/gyeongbok-a.jpg", "alt": "ใส่ฮันบกหน้ากำแพงวังคยองบกกุง", "by": "IG @liebepetty", "lic": "", "src": "", "t": "photos/t_gyeongbok-a.jpg"}, {"f": "photos/gyeongbok-0.jpg", "alt": "ศาลาคยองฮเวรู พระราชวังคยองบกกุง", "by": "Frank Schulenburg", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Gyeonghoeru_(Royal_Banquet_Hall)_at_Gyeongbokgung_Palace,_Seoul.jpg", "t": "photos/t_gyeongbok-0.jpg"}, {"f": "photos/gyeongbok-1.jpg", "alt": "คยองฮเวรูกับภูเขาด้านหลัง", "by": "kallerna", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Gyeonghoeru_Seoul.jpg", "t": "photos/t_gyeongbok-1.jpg"}, {"f": "photos/gyeongbok-2.jpg", "alt": "เงาสะท้อนคยองฮเวรู", "by": "eimoberg (a flickr user)", "lic": "CC BY 2.0", "src": "https://commons.wikimedia.org/wiki/File:Gyeongbokgung-Gyeonghoeru-02.jpg", "t": "photos/t_gyeongbok-2.jpg"}, {"f": "photos/gyeongbok-3.jpg", "alt": "คยองฮเวรูยามค่ำ", "by": "Hhk1201", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Gyeonghoeru_Pavilion_in_Gyeongbokgung_Palace.jpg", "t": "photos/t_gyeongbok-3.jpg"}], "seochon": [{"f": "photos/seochon-0.jpg", "alt": "ซอยบ้านฮันอก นูฮา-ดง ย่านซอชน", "by": "An Yeonggwan", "lic": "KOGL Type 1", "src": "https://commons.wikimedia.org/wiki/File:Seochon_Village,_Nuha-dong.jpg", "t": "photos/t_seochon-0.jpg"}, {"f": "https://commons.wikimedia.org/wiki/Special:FilePath/Seochon_Dae-o_Bookstore.jpg?width=1400", "alt": "ร้านหนังสือแดโอ ซอชน", "by": "Luvepoli", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Seochon_Dae-o_Bookstore.jpg", "t": "https://commons.wikimedia.org/wiki/Special:FilePath/Seochon_Dae-o_Bookstore.jpg?width=420"}, {"f": "photos/seochon-2.jpg", "alt": "ถนนอาหารหมู่บ้านเซจง ซอชน", "by": "An Yeonggwan", "lic": "KOGL Type 1", "src": "https://commons.wikimedia.org/wiki/File:Sejong_Village_Food_Street.jpg", "t": "photos/t_seochon-2.jpg"}], "samcheong": [{"f": "photos/samcheong-0.jpg", "alt": "ถนนซัมชอง-ดง", "by": "travel oriented", "lic": "CC BY-SA 2.0", "src": "https://commons.wikimedia.org/wiki/File:Samcheong-dong.jpg", "t": "photos/t_samcheong-0.jpg"}, {"f": "photos/samcheong-1.jpg", "alt": "ซัมชอง-ดง ร้านริมกำแพงหิน", "by": "Foxy Who", "lic": "CC BY-SA 3.0", "src": "https://commons.wikimedia.org/wiki/File:Samcheong-dong_-_panoramio.jpg", "t": "photos/t_samcheong-1.jpg"}, {"f": "photos/samcheong-2.jpg", "alt": "ซัมชอง-ดง", "by": "travel oriented", "lic": "CC BY-SA 2.0", "src": "https://commons.wikimedia.org/wiki/File:Samcheong-dong_-_14725001157.jpg", "t": "photos/t_samcheong-2.jpg"}], "changdeok": [{"f": "photos/changdeok-0.jpg", "alt": "อินจองจอน พระราชวังชังด็อกกุง", "by": "kallerna", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Changdeokgung_Seoul_3.jpg", "t": "photos/t_changdeok-0.jpg"}, {"f": "photos/changdeok-1.jpg", "alt": "ท้องพระโรงอินจองจอน ชังด็อกกุง", "by": "Bernard Gagnon", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:Injeongjeon_Hall_01.jpg", "t": "photos/t_changdeok-1.jpg"}, {"f": "photos/changdeok-2.jpg", "alt": "อินจองจอน ชังด็อกกุง", "by": "kallerna", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Changdeokgung_Seoul_4.jpg", "t": "photos/t_changdeok-2.jpg"}], "deoksu": [{"f": "photos/deoksu-0.jpg", "alt": "พระราชวังด็อกซูกุงช่วงใบไม้เปลี่ยนสี มุมสูง", "by": "travel oriented", "lic": "CC BY-SA 2.0", "src": "https://commons.wikimedia.org/wiki/File:Deoksugung_Palace_in_autumn.jpg", "t": "photos/t_deoksu-0.jpg"}, {"f": "photos/deoksu-1.jpg", "alt": "ด็อกซูกุงฤดูใบไม้ร่วง", "by": "라성민", "lic": "CC BY-SA 3.0", "src": "https://commons.wikimedia.org/wiki/File:%EB%8D%95%EC%88%98%EA%B6%81%EC%9D%98_%EA%B0%80%EC%9D%84.jpg", "t": "photos/t_deoksu-1.jpg"}, {"f": "photos/deoksu-2.jpg", "alt": "ด็อกซูกุงฤดูใบไม้ร่วง", "by": "travel oriented", "lic": "CC BY-SA 2.0", "src": "https://commons.wikimedia.org/wiki/File:Deoksugung-01.jpg", "t": "photos/t_deoksu-2.jpg"}, {"f": "photos/deoksu-3.jpg", "alt": "ซ็อกโจจอน ด็อกซูกุง", "by": "元諜報員", "lic": "CC BY-SA 3.0", "src": "https://commons.wikimedia.org/wiki/File:Seokjojeon_Deoksugung_ROK.jpg", "t": "photos/t_deoksu-3.jpg"}], "jeongdong": [{"f": "photos/jeongdong-0.jpg", "alt": "ถนนชองดง-กิล ข้างกำแพงวังด็อกซูกุง", "by": "Joongwon Lee - SKKU DOA", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Jeongdong-gil_(%EC%A0%95%EB%8F%99%EA%B8%B8),_One_of_the_most_popular_pedestrian_alleys_in_Seoul_by_the_lovers.jpg", "t": "photos/t_jeongdong-0.jpg"}, {"f": "https://commons.wikimedia.org/wiki/Special:FilePath/20160907_%EC%A0%95%EB%8F%99%EA%B5%90%ED%9A%8C.jpg?width=1400", "alt": "โบสถ์ชองดงบนถนนชองดง-กิล", "by": "Hangidan", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:20160907_%EC%A0%95%EB%8F%99%EA%B5%90%ED%9A%8C.jpg", "t": "https://commons.wikimedia.org/wiki/Special:FilePath/20160907_%EC%A0%95%EB%8F%99%EA%B5%90%ED%9A%8C.jpg?width=420"}, {"f": "photos/jeongdong-2.jpg", "alt": "จุงมยองจอน ย่านชองดง", "by": "Gapo", "lic": "CC BY-SA 3.0", "src": "https://commons.wikimedia.org/wiki/File:Joongmyungjun.jpg", "t": "photos/t_jeongdong-2.jpg"}], "hongnanpa": [{"f": "photos/hongnanpa-0.jpg", "alt": "บ้านฮงนันพา บ้านอิฐแดงที่มีไม้เลื้อย (ถ่ายหน้าร้อน)", "by": "Ryuch", "lic": "CC BY-SA 3.0", "src": "https://commons.wikimedia.org/wiki/File:Hong_Nanpa%27s_house.JPG", "t": "photos/t_hongnanpa-0.jpg"}], "hongdae": [{"f": "photos/hongdae-0.jpg", "alt": "ย่านฮงแดยามค่ำ", "by": "lumoplank", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:Hongdae,_Seoul-_Part_II_-_Hongdae2237.jpg", "t": "photos/t_hongdae-0.jpg"}, {"f": "photos/hongdae-1.jpg", "alt": "ถนนฮงแดยามค่ำ", "by": "Sgroey", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Hongdae_1.jpg", "t": "photos/t_hongdae-1.jpg"}, {"f": "photos/hongdae-2.jpg", "alt": "สี่แยกฮงแดยามค่ำ", "by": "Sgroey", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Hongdae_2.jpg", "t": "photos/t_hongdae-2.jpg"}, {"f": "photos/hongdae-3.jpg", "alt": "ถนนคนเดินฮงแด", "by": "U0894629", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Street_hongdae_Seoul.jpg", "t": "photos/t_hongdae-3.jpg"}], "seoulforest": [{"f": "photos/seoulforest-a.jpg", "alt": "ทางเดินโซลฟอเรสต์แสงเย็นฤดูใบไม้ร่วง", "by": "IG @liebepetty", "lic": "", "src": "", "t": "photos/t_seoulforest-a.jpg"}, {"f": "https://commons.wikimedia.org/wiki/Special:FilePath/Seoulforest_path01.jpg?width=1400", "alt": "ทางเดินในโซลฟอเรสต์ช่วงใบไม้ร่วง", "by": "Enigma7seven", "lic": "CC BY-SA 3.0", "src": "https://commons.wikimedia.org/wiki/File:Seoulforest_path01.jpg", "t": "https://commons.wikimedia.org/wiki/Special:FilePath/Seoulforest_path01.jpg?width=420"}, {"f": "photos/seoulforest-1.jpg", "alt": "สวนในโซลฟอเรสต์", "by": "CHO woohyuck", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Seoul_Forest_in_May_2022_(1).jpg", "t": "photos/t_seoulforest-1.jpg"}, {"f": "photos/seoulforest-2.jpg", "alt": "โซลฟอเรสต์", "by": "GeonwooLee", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Seoul_Forest_in_May_2022_(2).jpg", "t": "photos/t_seoulforest-2.jpg"}, {"f": "photos/seoulforest-3.jpg", "alt": "กวางในโซลฟอเรสต์", "by": "Drcbrothephotographer", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:Sika_Deer_-_Seoul_Forest_(3).jpg", "t": "photos/t_seoulforest-3.jpg"}], "ttukseom": [{"f": "photos/ttukseom-0.jpg", "alt": "ริมแม่น้ำฮัน สวนตุกซอมฮันกัง", "by": "Motoko C. K.", "lic": "CC BY 4.0", "src": "https://commons.wikimedia.org/wiki/File:Ttukseom_Hangang_Park_20260416_6.jpg", "t": "photos/t_ttukseom-0.jpg"}, {"f": "photos/ttukseom-1.jpg", "alt": "สนามหญ้าตุกซอมฮันกัง", "by": "Motoko C. K.", "lic": "CC BY 4.0", "src": "https://commons.wikimedia.org/wiki/File:Ttukseom_Hangang_Park_20260416_4.jpg", "t": "photos/t_ttukseom-1.jpg"}, {"f": "photos/ttukseom-2.jpg", "alt": "ท่าเรือเป็ดตุกซอม", "by": "Motoko C. K.", "lic": "CC BY 4.0", "src": "https://commons.wikimedia.org/wiki/File:Ttukseom_Hangang_Park_20260416_5.jpg", "t": "photos/t_ttukseom-2.jpg"}, {"f": "photos/ttukseom-3.jpg", "alt": "ตุกซอมฮันกังยามค่ำ", "by": "Real rism", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:NIght_view_at_Ttukseom_Hangang_Park.jpg", "t": "photos/t_ttukseom-3.jpg"}], "seongsu": [{"f": "photos/seongsu-a.jpg", "alt": "ถนนอาชาซันโร ย่านซองซู", "by": "IG @liebepetty", "lic": "", "src": "", "t": "photos/t_seongsu-a.jpg"}, {"f": "photos/seongsu-0.jpg", "alt": "คาเฟ่ดอกไม้ ซองซู-ดง", "by": "CartoonChess", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Flowery_cafe_in_Seongsu-dong.jpg", "t": "photos/t_seongsu-0.jpg"}, {"f": "photos/seongsu-1.jpg", "alt": "หน้าร้านคาเฟ่ ซองซู-ดง", "by": "CartoonChess", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Cafe_storefront_in_Seongsu-dong.jpg", "t": "photos/t_seongsu-1.jpg"}, {"f": "photos/seongsu-2.jpg", "alt": "ร้านริมถนน ซองซู-ดง", "by": "CartoonChess", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Seongsu-dong_storefronts.jpg", "t": "photos/t_seongsu-2.jpg"}, {"f": "photos/seongsu-3.jpg", "alt": "กราฟฟิตี ซองซู-ดง", "by": "CartoonChess", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Graffiti_art_in_Seongsu-dong.jpg", "t": "photos/t_seongsu-3.jpg"}, {"f": "photos/seongsu-4.jpg", "alt": "ถนนซองซูยามเย็น", "by": "CartoonChess", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Evening_street_in_Seongsu-dong.jpg", "t": "photos/t_seongsu-4.jpg"}], "hbc": [{"f": "photos/hbc-0.jpg", "alt": "วิวแฮบังชนกับหอคอยนัมซาน", "by": "Lee Jeong Woo / Ministry of Culture, Sports and Tourism", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Haebangchon_(55192350824).jpg", "t": "photos/t_hbc-0.jpg"}, {"f": "photos/hbc-1.jpg", "alt": "ตลาดชินฮึง แฮบังชน", "by": "Lee Jeong Woo / Ministry of Culture, Sports and Tourism", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Haebangchon_(55192248983).jpg", "t": "photos/t_hbc-1.jpg"}, {"f": "photos/hbc-2.jpg", "alt": "วิวจากดาดฟ้าแฮบังชน", "by": "Lee Jeong Woo / Ministry of Culture, Sports and Tourism", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Haebangchon_(55192249793).jpg", "t": "photos/t_hbc-2.jpg"}, {"f": "photos/hbc-3.jpg", "alt": "ตลาดชินฮึง แฮบังชน", "by": "Lee Jeong Woo / Ministry of Culture, Sports and Tourism", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Haebangchon_(55192500745).jpg", "t": "photos/t_hbc-3.jpg"}], "bongeunsa": [{"f": "photos/bongeunsa-0.jpg", "alt": "วิหารหลักและเจดีย์ วัดบงอึนซา", "by": "kallerna", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Bongeunsa_Seoul_8.jpg", "t": "photos/t_bongeunsa-0.jpg"}, {"f": "photos/bongeunsa-1.jpg", "alt": "พระพุทธรูปมีรึกกับตึกกังนัม วัดบงอึนซา", "by": "kallerna", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Bongeunsa_Seoul_4.jpg", "t": "photos/t_bongeunsa-1.jpg"}, {"f": "photos/bongeunsa-2.jpg", "alt": "ศาลาวัดบงอึนซาตัดกับตึกสูงซัมซอง", "by": "kallerna", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Bongeunsa_Seoul_9.jpg", "t": "photos/t_bongeunsa-2.jpg"}, {"f": "photos/bongeunsa-3.jpg", "alt": "มองโคเอ็กซ์จากวัดบงอึนซา", "by": "Marcin Białek", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:COEX_as_seen_from_Bongeunsa_temple.jpg", "t": "photos/t_bongeunsa-3.jpg"}], "starfield": [{"f": "photos/starfield-0.jpg", "alt": "Starfield Library ในโคเอ็กซ์มอลล์", "by": "Sean Young (@assanges)", "lic": "CC BY 4.0", "src": "https://commons.wikimedia.org/wiki/File:Starfield_Library_COEX_20240218.jpg", "t": "photos/t_starfield-0.jpg"}, {"f": "photos/starfield-1.jpg", "alt": "ชั้นหนังสือสูง Starfield Library โคเอ็กซ์", "by": "chsyang", "lic": "Public domain", "src": "https://commons.wikimedia.org/wiki/File:Library_in_Seoul_(53608020746).jpg", "t": "photos/t_starfield-1.jpg"}, {"f": "photos/starfield-2.jpg", "alt": "มุมนั่งอ่าน Starfield Library โคเอ็กซ์", "by": "chsyang", "lic": "Public domain", "src": "https://commons.wikimedia.org/wiki/File:Library_in_Seoul_(53608036346).jpg", "t": "photos/t_starfield-2.jpg"}], "ewha": [{"f": "photos/ewha-0.jpg", "alt": "อาคาร ECC มหาวิทยาลัยอีฮวา ช่วงใบไม้เปลี่ยนสี", "by": "Ken Eckert", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Ewha_Campus_Complex.jpg", "t": "photos/t_ewha-0.jpg"}, {"f": "photos/ewha-1.jpg", "alt": "ทางเดินกลาง ECC มองไปทางวิทยาเขต", "by": "LWYang", "lic": "CC BY 2.0", "src": "https://commons.wikimedia.org/wiki/File:2019-09-15_Ewha_Womans_University.jpg", "t": "photos/t_ewha-1.jpg"}, {"f": "photos/ewha-2.jpg", "alt": "ECC อีฮวา", "by": "Christian Bolz", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Ewha_Womans_University_Campus_new.jpg", "t": "photos/t_ewha-2.jpg"}, {"f": "photos/ewha-3.jpg", "alt": "ทางลาด ECC อีฮวา", "by": "Hdb1115", "lic": "CC BY-SA 3.0", "src": "https://commons.wikimedia.org/wiki/File:%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90_ECC.jpg", "t": "photos/t_ewha-3.jpg"}], "olympic": [{"f": "photos/olympic-a.jpg", "alt": "เนินหญ้าโอลิมปิกพาร์กยามเย็น", "by": "IG @liebepetty", "lic": "", "src": "", "t": "photos/t_olympic-a.jpg"}, {"f": "photos/olympic-b.jpg", "alt": "ล็อตเต้เวิลด์ทาวเวอร์มองจากโอลิมปิกพาร์ก", "by": "IG @liebepetty", "lic": "", "src": "", "t": "photos/t_olympic-b.jpg"}, {"f": "https://commons.wikimedia.org/wiki/Special:FilePath/Autumn_in_Olympic_Park%2C_Seoul.jpg?width=1400", "alt": "ถนนกิงโกะในโอลิมปิกพาร์กช่วงฤดูใบไม้ร่วง", "by": "Firadrn", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Autumn_in_Olympic_Park,_Seoul.jpg", "t": "https://commons.wikimedia.org/wiki/Special:FilePath/Autumn_in_Olympic_Park%2C_Seoul.jpg?width=420"}, {"f": "https://commons.wikimedia.org/wiki/Special:FilePath/Olympic_Park_in_Oct_2020.jpg?width=1400", "alt": "โอลิมปิกพาร์ก ตุลาคม 2020", "by": "Hyeonyoung Lee 21", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Olympic_Park_in_Oct_2020.jpg", "t": "https://commons.wikimedia.org/wiki/Special:FilePath/Olympic_Park_in_Oct_2020.jpg?width=420"}], "jamsil": [{"f": "photos/jamsil-0.jpg", "alt": "ล็อตเต้เวิลด์ทาวเวอร์และทะเลสาบซ็อกชนยามเย็น", "by": "kallerna", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Lotte_World_morning_view_8.jpg", "t": "photos/t_jamsil-0.jpg"}, {"f": "photos/jamsil-1.jpg", "alt": "ทะเลสาบซ็อกชนกับล็อตเต้เวิลด์ทาวเวอร์", "by": "Simon Williams-Im", "lic": "CC BY 2.0", "src": "https://commons.wikimedia.org/wiki/File:View_of_Seokchon_Lake.jpg", "t": "photos/t_jamsil-1.jpg"}, {"f": "photos/jamsil-2.jpg", "alt": "วิวจัมซิลกับทะเลสาบซ็อกชน", "by": "kallerna", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Lotte_World_day_view_5.jpg", "t": "photos/t_jamsil-2.jpg"}, {"f": "photos/jamsil-3.jpg", "alt": "ทะเลสาบซ็อกชน", "by": "Christophe95", "lic": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File:Seokchon_Lake.jpg", "t": "photos/t_jamsil-3.jpg"}], "sangguk": [{"f": "photos/sangguk-a.jpg", "alt": "วิวต้นกิงโกะกับหลังคาฮันอกจากดาดฟ้า Café SangGuk", "by": "IG @liebepetty", "lic": "", "src": "", "t": "photos/t_sangguk-a.jpg"}, {"f": "photos/sangguk-b.jpg", "alt": "อเมริกาโน่เย็นบนดาดฟ้า Café SangGuk", "by": "IG @liebepetty", "lic": "", "src": "", "t": "photos/t_sangguk-b.jpg"}]};
+const STLABEL={backup:"แผนสำรอง",fixed:"เวลาล็อก",must:"ต้องไป",proposed:"เสนอไว้ · ยังไม่ยืนยัน",tbc:"รอยืนยัน",est:"ประมาณการ",planned:"ตามแผน"};
+const ALL=DAYS.flatMap(d=>d.stops.map(s=>({...s,day:d.n})));
+const PHOTO=ALL.filter(s=>s.photo);
+const DAYTONE=["#722F37","#795548","#475746","#5A4632","#3E3A52"];
+
+/* ---------- state ---------- */
+let visited=load("visited",{}), fav=load("fav",{}), notes=load("notes",{}), open=load("open",{});
+let curDay=load("day",1), curTab=load("tab","overview");
+const mm=location.hash.replace("#","");
+if(["overview","itinerary","gallery","shopping","map"].includes(mm)) curTab=mm;
+
+/* ---------- toast & copy ---------- */
+let tt;
+function toast(m){const t=document.getElementById("toast");t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(()=>t.hidden=true,2200)}
+function copyText(text,okMsg,fallbackHost){
+  const fb=()=>{ if(!fallbackHost) return toast("คัดลอกไม่ได้ในแอปนี้");
+    let ta=fallbackHost.querySelector("textarea.copyfall"); if(!ta){ta=document.createElement("textarea");ta.className="copyfall";ta.setAttribute("aria-label","ข้อความสำหรับคัดลอก");fallbackHost.appendChild(ta)}
+    ta.value=text;ta.focus();ta.select();toast("เลือกข้อความไว้แล้ว กดคัดลอกเองได้เลย")};
+  try{navigator.clipboard.writeText(text).then(()=>toast(okMsg),fb)}catch(e){fb()}
+}
+
+/* ---------- icons ---------- */
+const I={
+ home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11l8-6 8 6v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg>',
+ list:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="6" r="1.6"/><circle cx="6" cy="12" r="1.6"/><circle cx="6" cy="18" r="1.6"/><path d="M10 6h10M10 12h10M10 18h10"/></svg>',
+ photo:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M21 16l-5-5-8 8"/></svg>',
+ bag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>',
+ pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>',
+ chev:'<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>',
+ star:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>',
+ starO:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>',
+ check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l5 5 9-10"/></svg>',
+ copy:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg>'
+};
+const TABS=[["overview","ภาพรวม",I.home],["itinerary","แผนเที่ยว",I.list],["gallery","รูปสถานที่",I.photo],["shopping","ช้อปปิ้ง",I.bag],["map","แผนที่",I.pin]];
+
+function renderNav(){
+  const html=TABS.map(([k,l,ic])=>`<button role="tab" data-tab="${k}" aria-selected="${curTab===k}">${ic}<span>${l}</span></button>`).join("");
+  document.getElementById("tabsMob").innerHTML=html;
+  document.getElementById("tabsDesk").innerHTML=TABS.map(([k,l])=>`<button role="tab" data-tab="${k}" aria-selected="${curTab===k}">${l}</button>`).join("");
+}
+function setTab(k){curTab=k;save("tab",k);renderNav();for(const [t] of TABS) document.getElementById("v-"+t).hidden=(t!==k);render(k);window.scrollTo({top:0})}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b){setTab(b.dataset.tab)}});
+
+function pills(s){
+  const out=[];
+  if(s.st==="fixed") out.push(`<span class="pill p-fixed">${STLABEL.fixed}</span>`);
+  if(s.st==="must"||s.must) out.push(`<span class="pill p-must">★ ต้องไป</span>`);
+  if(s.st==="backup") out.push(`<span class="pill p-tbc">แผนสำรอง</span>`);
+  if(["proposed","tbc","est"].includes(s.st)) out.push(`<span class="pill p-${s.st}">${STLABEL[s.st]}</span>`);
+  return out.join("");
+}
+const timeStr=s=>s.end?`${s.time}<small>–${s.end}</small>`:s.time;
+
+/* ---------- OVERVIEW ---------- */
+function daysUntil(){const now=new Date();const start=new Date("2026-11-10T00:00:00+09:00");return Math.ceil((start-now)/86400000)}
+function renderOverview(){
+  const du=daysUntil();
+  const must=ALL.filter(s=>s.st==="must"||s.must||s.st==="fixed");
+  const forecastOpen=du<=16;
+  const el=document.getElementById("v-overview");
+  el.innerHTML=`
+  <div class="hero"><canvas id="leafCanvas" aria-hidden="true"></canvas>
+    <div class="eyebrow" style="color:var(--gold)">5 วัน · โซล · ฤดูใบไม้ร่วง</div>
+    <div class="han-big" style="margin-top:10px">서울<span>의</span> 가을</div>
+    <p>ทริปตามล่ากิงโกะสีทอง วังเก่า คาเฟ่วิวดี และย่านที่ต้องเดินถ่ายรูป ตารางทั้งหมดตามแผนที่ตกลงกันไว้</p>
+    <div class="meta"><span><b>10–14 พ.ย. 2026</b> · อังคาร–เสาร์</span><span>เวลา KST</span><span>ถึงอินชอน 06:40</span></div>
+    ${du>0?`<div class="countdown">อีก <b class="tnum">${du}</b> วัน</div>`:du>-5?`<div class="countdown"><b>กำลังเที่ยว</b></div>`:""}
+  </div>
+
+  ${allDaysHTML()}
+
+  <div style="margin-top:16px">
+    <div class="panel" style="display:grid;gap:12px;align-content:start">
+      <h3 style="margin:0">ป้ายสถานะ</h3>
+      <div class="legend"><span class="pill p-fixed">เวลาล็อก</span><span class="pill p-must">★ ต้องไป</span><span class="pill p-proposed">เสนอไว้ · ยังไม่ยืนยัน</span><span class="pill p-tbc">รอยืนยัน</span><span class="pill p-est">ประมาณการ</span><span class="pill p-tbc">แผนสำรอง</span></div>
+      <div class="note"><b>ยังไม่ยืนยัน</b>ประเภททรีตเมนต์วันที่ 1 · โรงแรม · ร้านอาหารมื้อเที่ยงและเย็น · คาเฟ่ใกล้ Seoul Forest</div>
+      <div class="info"><b>ข้อมูลที่บันทึก</b><br>การติ๊ก โน้ต รายการช้อปปิ้ง และรูปที่เพิ่ม เก็บในเบราว์เซอร์ของแต่ละเครื่อง เพื่อนจะเห็นแผนเดียวกัน แต่ไม่เห็นสิ่งที่คุณติ๊กหรือจดไว้</div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top:16px">
+    <h3>ต้องไปให้ได้</h3>
+    <div class="legend">${must.map(s=>`<button class="pill p-must" style="cursor:pointer" data-goday="${s.day}" data-goto="${s.id}">D${s.day} · ${esc(s.en.split(" — ")[0])}</button>`).join("")}</div>
+  </div>
+
+  <div class="grid2" style="margin-top:16px">
+    <div class="panel">
+      <h3>พยากรณ์อากาศ</h3>
+      <div class="wx">${DAYS.map(d=>`<div><b>D${d.n}</b>${d.dshort}<span>${forecastOpen?"เปิดลิงก์เช็ก":"ยังไม่มีพยากรณ์"}</span></div>`).join("")}</div>
+      <p style="margin:12px 0 0;font-size:14px">${forecastOpen
+        ?"ตอนนี้อยู่ในช่วงที่บริการพยากรณ์ระยะกลางเริ่มครอบคลุมวันเดินทางแล้ว เปิดลิงก์ด้านล่างเพื่อดูอุณหภูมิ โอกาสฝน และลม"
+        :`<b>Live forecast not yet available.</b> พยากรณ์รายวันจะเริ่มครอบคลุมวันที่ 10 พ.ย. ราวปลายเดือนตุลาคม (พยากรณ์ 16 วันของ Open-Meteo) และต้นเดือนพฤศจิกายน (พยากรณ์ระยะกลาง 10 วันของกรมอุตุฯ เกาหลี)`}</p>
+      <div class="actions" style="margin-top:12px">
+        <a class="btn" href="https://www.weather.go.kr/w/index.do" target="_blank" rel="noopener">KMA กรมอุตุฯ เกาหลี</a>
+        <a class="btn" href="https://search.naver.com/search.naver?query=${encodeURIComponent("서울 날씨")}" target="_blank" rel="noopener">Naver 서울 날씨</a>
+        <a class="btn" href="https://open-meteo.com/en/docs#latitude=37.5665&longitude=126.978&timezone=Asia%2FTokyo" target="_blank" rel="noopener">Open-Meteo</a>
+      </div>
+      <p class="photo-hint" style="margin:10px 0 0">เช็กอีกครั้งคืนก่อนบินและเช้าวันที่ 10 พ.ย. หน้านี้ดึงข้อมูลอากาศสดเองไม่ได้ เพราะหน้าแบบแชร์ถูกจำกัดไม่ให้เรียกเว็บภายนอก</p>
+    </div>
+    <div class="panel">
+      <h3>ภูมิอากาศกลางเดือน พ.ย. <span class="pill p-est" style="vertical-align:middle">ข้อมูลย้อนหลัง</span></h3>
+      <ul class="clim">
+        <li><span>อุณหภูมิสูงสุดกลางวัน</span><span>ราว 10–14°C</span></li>
+        <li><span>อุณหภูมิต่ำสุดตอนเช้า</span><span>ราว 2–6°C</span></li>
+        <li><span>ฝน</span><span>ไม่บ่อย แต่มีวันฝนได้</span></li>
+        <li><span>พระอาทิตย์ตก</span><span>ราว 17:20</span></li>
+        <li><span>กิงโกะ/ใบไม้แดงในเมือง</span><span>มักพีคปลาย ต.ค.–กลาง พ.ย.</span></li>
+      </ul>
+      <p class="photo-hint" style="margin:10px 0 0">เป็นค่าโดยประมาณจากค่าเฉลี่ยหลายปี ไม่ใช่พยากรณ์ของปีนี้ แดดหมดเร็ว จุดถ่ายใบไม้ทุกจุดจัดไว้ก่อนพระอาทิตย์ตก ดูรายงานใบไม้เปลี่ยนสีล่าสุดได้ที่ <a href="https://english.visitkorea.or.kr/" target="_blank" rel="noopener">Korea Tourism Organization</a></p>
+    </div>
+  </div>`;
+  drawLeaves();
+}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-goday]");if(!b)return;curDay=+b.dataset.goday;save("day",curDay);if(b.dataset.goto){open[b.dataset.goto]=true;save("open",open)}setTab("itinerary");if(b.dataset.goto){const t=document.getElementById("stop-"+b.dataset.goto);t&&t.scrollIntoView({block:"center"})}});
+
+function allDaysHTML(){
+  return `<div class="alldays">
+    <div class="sec-head" style="margin-top:22px"><div><div class="eyebrow">Full itinerary</div><h2>แผนทั้งทริป</h2></div>
+      <button class="btn" id="copyAllOv">${I.copy}คัดลอกแผนทั้งทริป</button></div>
+    <div id="copyHostOv"></div>
+    <div class="adgrid">${DAYS.map(d=>{const hero=PHOTOS[d.stops.find(s=>PHOTOS[s.id])?.id];
+      return `<article class="adday">
+      ${hero?`<button class="adimg" data-gal="${d.stops.find(s=>PHOTOS[s.id]).id}" aria-label="ดูรูป"><img src="${hero[0].t}" alt="${esc(hero[0].alt)}" loading="lazy"></button>`:""}
+      <div class="adhead"><div class="dno">Day<b>${d.n}</b></div><div style="min-width:0"><div class="t">${esc(d.th)}</div><div class="s">${d.dow} ${d.dshort} · <span class="han">${esc(d.ko)}</span></div></div></div>
+      <ol class="adlist">${d.stops.map(s=>`<li class="${s.minor?"mn":""}${visited[s.id]?" dn":""}"><span class="tnum at">${s.time}</span><button class="an" data-goday="${d.n}" data-goto="${s.id}">${esc(s.en)}${s.st==="fixed"?' <span class="pill p-fixed">ล็อก</span>':(s.st==="must"||s.must)?' <span class="pill p-must">★</span>':["proposed","tbc"].includes(s.st)?` <span class="pill p-${s.st}">${s.st==="tbc"?"TBC":"เสนอ"}</span>`:""}</button></li>`).join("")}</ol>
+      <button class="btn" data-goday="${d.n}" style="align-self:start">ดูรายละเอียด Day ${d.n}</button>
+    </article>`}).join("")}</div></div>`;
+}
+document.addEventListener("click",e=>{if(e.target.closest("#copyAllOv"))copyText(DAYS.map(dayText).join("\n\n"),"คัดลอกแผนทั้งทริปแล้ว",document.getElementById("copyHostOv"))});
+
+/* falling ginkgo leaves on the hero (canvas, static if reduced motion) */
+let leafRAF;
+function drawLeaves(){
+  const c=document.getElementById("leafCanvas");if(!c)return;cancelAnimationFrame(leafRAF);
+  const ctx=c.getContext("2d");const dpr=Math.min(2,window.devicePixelRatio||1);
+  const W=c.clientWidth,H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;ctx.scale(dpr,dpr);
+  const rnd=(a,b)=>a+Math.random()*(b-a);
+  const cols=["#C7A56B","#D9A93C","#B98A2E","#8C3A3F","#A45A3B"];
+  const leaves=Array.from({length:Math.round(W/22)},()=>({x:rnd(0,W),y:rnd(-H,H),s:rnd(7,16),r:rnd(0,6.28),vr:rnd(-.02,.02),vy:rnd(.25,.7),sw:rnd(0,6.28),c:cols[Math.floor(rnd(0,cols.length))]}));
+  function leaf(l){ctx.save();ctx.translate(l.x+Math.sin(l.sw)*8,l.y);ctx.rotate(l.r);ctx.fillStyle=l.c;ctx.globalAlpha=.75;
+    ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,l.s,-Math.PI*.85,-Math.PI*.15);ctx.closePath();ctx.fill();
+    ctx.globalAlpha=.5;ctx.strokeStyle=l.c;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(0,l.s*.5);ctx.stroke();ctx.restore()}
+  function bg(){const g=ctx.createLinearGradient(0,0,W,H);g.addColorStop(0,"#2A1E1C");g.addColorStop(.6,"#3B2422");g.addColorStop(1,"#4A3A28");ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function frame(){bg();for(const l of leaves){if(!reduce){l.y+=l.vy;l.r+=l.vr;l.sw+=.01;if(l.y>H+20){l.y=-20;l.x=rnd(0,W)}}leaf(l)}if(!reduce&&!document.getElementById("v-overview").hidden)leafRAF=requestAnimationFrame(frame)}
+  frame();
+}
+
+/* ---------- ITINERARY ---------- */
+function dayText(d){
+  return `Seoul Autumn 2026 · Day ${d.n} (${d.dow} ${d.dshort})\n${d.title}\n`+d.stops.map(s=>`${s.time}${s.end?"–"+s.end:""}  ${s.en}${s.ko?" ("+s.ko+")":""}${["proposed","tbc","est"].includes(s.st)?" ["+STLABEL[s.st]+"]":""}${s.st==="fixed"?" [เวลาล็อก]":""}${s.ko&&!s.nomap?"\n      "+naver(s.ko):""}`).join("\n");
+}
+function renderItinerary(){
+  const el=document.getElementById("v-itinerary");
+  const bar=`<div class="daybar" role="tablist" aria-label="เลือกวัน"><button role="tab" data-day="0" aria-selected="${curDay===0}"><small>รวม</small><b>ทุกวัน</b></button>${DAYS.map(x=>`<button role="tab" data-day="${x.n}" aria-selected="${x.n===curDay}"><small>Day ${x.n}</small><b>${x.dshort.split(" ")[0]}</b> <small style="display:inline">พ.ย.</small></button>`).join("")}</div>`;
+  if(!curDay){el.innerHTML=bar+allDaysHTML();return}
+  const d=DAYS[curDay-1];
+  el.innerHTML=`
+  ${bar}
+  <div class="dayhead">
+    <div class="eyebrow">Day ${d.n} · ${d.dow} ${d.dshort} 2026</div>
+    <h2>${esc(d.title)}</h2>
+    <div class="theme-ko">${esc(d.ko)} · <span style="font-family:var(--f-body);color:var(--muted)">${esc(d.th)}</span></div>
+    <div class="tools" style="margin-top:6px">
+      <button class="btn" id="copyDay">${I.copy}คัดลอกแผนวันนี้</button>
+      <button class="btn" id="copyAll">แชร์แผนทั้งทริป</button>
+      <button class="btn" id="expandAll">กางทั้งหมด</button>
+    </div>
+    <div id="copyHost"></div>
+  </div>
+  ${d.notes.map(n=>`<div class="${n.t==="warn"?"note":"info"}" style="margin-bottom:12px"><b>${esc(n.h)}</b>${esc(n.b)}</div>`).join("")}
+  <ol class="tl">${d.stops.map(s=>stopHTML(s,d)).join("")}</ol>
+  <div class="daynotes panel">
+    <h3 style="margin:0">โน้ตของวันนี้</h3>
+    <div class="photo-hint">มุมถ่ายรูปวันนี้: ${esc(d.shot)}</div>
+    <label for="dn-${d.n}" class="photo-hint">จดอะไรก็ได้ เช่น ร้านที่อยากลอง หรือเวลาที่ยืนยันแล้ว</label>
+    <textarea id="dn-${d.n}" data-note="day${d.n}">${esc(notes["day"+d.n]||"")}</textarea>
+  </div>`;
+  el.querySelector("#copyDay").onclick=()=>copyText(dayText(d),"คัดลอกแผน Day "+d.n+" แล้ว",el.querySelector("#copyHost"));
+  el.querySelector("#copyAll").onclick=()=>copyText(DAYS.map(dayText).join("\n\n"),"คัดลอกแผนทั้งทริปแล้ว ส่งต่อให้เพื่อนได้เลย",el.querySelector("#copyHost"));
+  el.querySelector("#expandAll").onclick=()=>{const all=d.stops.every(s=>open[s.id]);d.stops.forEach(s=>open[s.id]=!all);save("open",open);renderItinerary()};
+}
+function stopHTML(s,d){
+  const cls=["stop"];if(s.st==="must"||s.must)cls.push("is-must");if(s.st==="fixed")cls.push("is-fixed");if(s.minor)cls.push("is-minor");if(visited[s.id])cls.push("is-done");
+  const isOpen=!!open[s.id];
+  const tp=s.photo?(load("ph:"+s.id,[])||[]).length:0;
+  return `<li class="${cls.join(" ")}" id="stop-${s.id}">
+   <div class="time">${timeStr(s)}</div>
+   <div class="card" data-open="${isOpen}">
+    <button class="card-h" data-toggle="${s.id}" aria-expanded="${isOpen}">
+      <div class="txt"><div class="en">${fav[s.id]?'<span style="color:var(--gilt)">★ </span>':""}${esc(s.en)}</div>${s.ko?`<div class="ko">${esc(s.ko)}</div>`:""}${(s.desc&&!isOpen)?`<div class="photo-hint">${esc(s.desc)}</div>`:""}<div class="pills">${pills(s)}${visited[s.id]?'<span class="pill p-planned">✓ ไปแล้ว</span>':""}</div></div>
+      ${PHOTOS[s.id]&&!isOpen?`<img class="hthumb" src="${PHOTOS[s.id][0].t}" alt="" loading="lazy">`:""}
+      ${I.chev}
+    </button>
+    ${isOpen?`<div class="card-b">
+      ${PHOTOS[s.id]?`<div class="strip">${PHOTOS[s.id].map((p,i)=>`<button data-gal="${s.id}" data-gi="${i}" aria-label="${esc(p.alt)}"><img src="${p.t}" alt="${esc(p.alt)}" loading="lazy"></button>`).join("")}</div><div class="photo-hint" style="font-size:12px;margin-top:-6px">ภาพ: ${esc([...new Set(PHOTOS[s.id].map(p=>p.by))].join(", "))}${PHOTOS[s.id].some(p=>p.src)?" · Wikimedia Commons":""}</div>`:""}
+      ${s.desc?`<p>${esc(s.desc)}</p>`:""}
+      ${s.addr?`<p class="photo-hint">ที่อยู่ตามบทความ: <span class="han">${esc(s.addr)}</span></p>`:""}
+      ${s.id==="facial"?`<div class="note"><b>ก่อนยืนยันนัด</b>ถามคลินิกว่าหลังทำต้องเลี่ยงแดดกี่วัน ควรทาอะไร และห้ามอะไร ซื้อของ aftercare ตามที่คลินิกแนะนำเท่านั้น</div>`:""}
+      <div class="actions">
+        ${s.ko&&!s.nomap?`<a class="btn naver" href="${naver(s.addr||s.ko)}" target="_blank" rel="noopener">${I.pin}Naver Map</a>
+        <button class="btn" data-copyko="${esc(s.ko)}">${I.copy}คัดลอกชื่อเกาหลี</button>`:""}
+        ${s.photo?`<button class="btn" data-gal="${s.id}">${I.photo}ดูรูปสถานที่${tp?` (${tp})`:""}</button>`:""}
+        ${(s.sources||[]).map(([l,u])=>`<a class="btn" href="${u}" target="_blank" rel="noopener">${esc(l)}</a>`).join("")}
+      </div>
+      ${igBlock(s.id)}
+      ${!s.minor||s.ko?`<div class="toggles">
+        <button class="chk" data-visit="${s.id}" aria-pressed="${!!visited[s.id]}">${I.check}${visited[s.id]?"ไปแล้ว":"ทำเครื่องหมายว่าไปแล้ว"}</button>
+        <button class="chk" data-fav="${s.id}" aria-pressed="${!!fav[s.id]}">${fav[s.id]?I.star:I.starO}${fav[s.id]?"บันทึกไว้แล้ว":"บันทึกสถานที่"}</button>
+      </div>`:""}
+      <div><label for="n-${s.id}" class="photo-hint">โน้ตส่วนตัว</label><textarea id="n-${s.id}" data-note="${s.id}" placeholder="เช่น เมนูที่อยากสั่ง จุดถ่ายรูป เวลาที่ยืนยันแล้ว">${esc(notes[s.id]||"")}</textarea></div>
+    </div>`:""}
+   </div></li>`;
+}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-toggle]");if(t){const id=t.dataset.toggle;open[id]=!open[id];save("open",open);rerender();return}
+  const dy=e.target.closest("[data-day]");if(dy){curDay=+dy.dataset.day;save("day",curDay);renderItinerary();return}
+  const v=e.target.closest("[data-visit]");if(v){const id=v.dataset.visit;visited[id]=!visited[id];save("visited",visited);rerender();return}
+  const f=e.target.closest("[data-fav]");if(f){const id=f.dataset.fav;fav[id]=!fav[id];save("fav",fav);rerender();return}
+  const c=e.target.closest("[data-copyko]");if(c){copyText(c.dataset.copyko,"คัดลอก "+c.dataset.copyko+" แล้ว",c.closest(".card-b,.body,.tile-b"));return}
+  const g=e.target.closest("[data-gal]");if(g){openLB(g.dataset.gal);if(g.dataset.gi){lbPhoto=+g.dataset.gi;drawLB()}return}
+});
+document.addEventListener("input",e=>{const n=e.target.closest("[data-note]");if(n){notes[n.dataset.note]=n.value;save("notes",notes)}});
+function rerender(){render(curTab)}
+
+/* ---------- GALLERY ---------- */
+let galFilter=load("galf","all");
+function picsOf(id){return [...(PHOTOS[id]||[]).map(p=>({src:p.f,thumb:p.t,alt:p.alt,by:p.by,lic:p.lic,link:p.src})),...(load("ph:"+id,[])||[]).map((p,i)=>({src:p.src,thumb:p.src,alt:"รูปที่เพิ่มเอง",mine:i,name:p.name}))]}
+function coverHTML(s){
+  const pics=picsOf(s.id);
+  const tone=DAYTONE[s.day-1];
+  if(pics.length) return `<button class="cover" data-gal="${s.id}" aria-label="เปิดรูป ${esc(s.en)}"><img src="${pics[0].thumb}" alt="${esc(pics[0].alt)}" loading="lazy"><span class="count">${pics.length} รูป</span></button>`;
+  return `<button class="cover" data-gal="${s.id}" aria-label="เปิดแหล่งรูป ${esc(s.en)}" style="background:linear-gradient(155deg,${tone},#1E1817)">
+    <div class="ph"><div class="lab">Day ${s.day} · ดูรูปจริงผ่านลิงก์</div><div class="k">${esc(s.ko)}</div></div></button>`;
+}
+function renderGallery(){
+  const el=document.getElementById("v-gallery");
+  const list=PHOTO.filter(s=>galFilter==="all"||(galFilter==="fav"?fav[s.id]:String(s.day)===galFilter));
+  el.innerHTML=`
+  <div class="sec-head"><div><div class="eyebrow">Photo references</div><h2>รูปสถานที่จริง</h2></div></div>
+  <div class="info" style="margin-bottom:14px">รูปในหน้านี้เป็นรูปจริงของแต่ละสถานที่จาก Wikimedia Commons ที่เปิดสิทธิ์ให้ใช้ได้ ตรวจแล้วว่าตรงสถานที่ และมีชื่อช่างภาพกับสัญญาอนุญาตกำกับทุกรูป ไม่มีรูป AI หรือรูปสต็อก คาเฟ่และบางจุดไม่มีรูปที่ใช้ได้ฟรี ให้กดลิงก์ Naver หรือ Instagram ดูรูปจริงแทน (โพสต์ IG ฝังในหน้านี้ไม่ได้) ส่วนใหญ่ถ่ายนอกฤดูใบไม้ร่วง ถ้ามีรูปที่ถ่ายเอง กด “เพิ่มรูป” ได้</div>
+  <div class="filters">${[["all","ทั้งหมด"],["1","Day 1"],["2","Day 2"],["3","Day 3"],["4","Day 4"],["5","Day 5"],["fav","★ บันทึกไว้"]].map(([k,l])=>`<button class="fchip" data-gf="${k}" aria-pressed="${galFilter===k}">${l}</button>`).join("")}</div>
+  ${list.length?`<div class="gal">${list.map(s=>`<article class="tile">${coverHTML(s)}
+    <div class="tile-b"><div><div class="en">${esc(s.en.split(" — ")[0])}</div><div class="photo-hint">Day ${s.day} · ${s.time}</div></div>
+    ${PHOTOS[s.id]?`<div class="photo-hint" style="font-size:12px">ภาพ: ${esc([...new Set(PHOTOS[s.id].map(p=>p.by))].join(", "))}${PHOTOS[s.id].some(p=>p.src)?" · Wikimedia Commons":""}</div>`:`<div><code>${esc(s.photo)}</code></div>`}
+    <div class="links">
+      <a href="${naverImg(s.photo)}" target="_blank" rel="noopener">Naver รูป</a>
+      <a href="${igTag(s.tag)}" target="_blank" rel="noopener">#${esc(s.tag)}</a>
+      <a href="${googleImg(s.photo)}" target="_blank" rel="noopener">Google</a>
+      ${(s.sources||[]).map(([l,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(l)}</a>`).join("")}
+      <label>เพิ่มรูป<input type="file" accept="image/*" multiple data-up="${s.id}"></label>
+    </div></div></article>`).join("")}</div>`:`<p class="muted">ยังไม่มีสถานที่ที่บันทึกไว้ กดบันทึกจากหน้าแผนเที่ยวได้</p>`}
+  <p class="photo-hint" style="margin-top:16px">แหล่งอ้างอิงทางการ: <a href="https://english.visitseoul.net/" target="_blank" rel="noopener">Visit Seoul</a> · <a href="https://english.visitkorea.or.kr/" target="_blank" rel="noopener">Korea Tourism Organization</a> · <a href="https://english.seoul.go.kr/" target="_blank" rel="noopener">Seoul Metropolitan Government</a> · <a href="https://www.adaymag.com/2024/10/24/monbrew.html" target="_blank" rel="noopener">a day magazine (Monbrew)</a> ลิงก์เหล่านี้ใช้เพื่อดูรูปเท่านั้น ไม่ได้ให้สิทธิ์นำรูปมาใช้ซ้ำ</p>`;
+}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-gf]");if(b){galFilter=b.dataset.gf;save("galf",galFilter);renderGallery()}});
+document.addEventListener("change",e=>{
+  const inp=e.target.closest("[data-up]");if(!inp)return;const id=inp.dataset.up;const files=[...inp.files];if(!files.length)return;
+  let cur=load("ph:"+id,[])||[];let done=0;
+  files.forEach(f=>{const r=new FileReader();r.onload=()=>{const img=new Image();img.onload=()=>{
+    const m=900,sc=Math.min(1,m/Math.max(img.width,img.height));const cv=document.createElement("canvas");cv.width=Math.round(img.width*sc);cv.height=Math.round(img.height*sc);
+    cv.getContext("2d").drawImage(img,0,0,cv.width,cv.height);cur.push({src:cv.toDataURL("image/jpeg",.78),name:f.name});
+    if(++done===files.length){if(save("ph:"+id,cur))toast("เพิ่มรูปแล้ว (เก็บในเครื่องนี้)");else toast("พื้นที่เก็บในเบราว์เซอร์เต็ม ลองลบรูปบางรูป");rerender()}};img.src=r.result};r.readAsDataURL(f)});
+});
+
+/* lightbox: browses user photos if any, else a source card per place; swipe or arrows move between places */
+let lbIdx=0,lbPhoto=0;
+function openLB(id){const list=PHOTO;lbIdx=Math.max(0,list.findIndex(s=>s.id===id));lbPhoto=0;drawLB();document.getElementById("lightbox").hidden=false;document.body.style.overflow="hidden"}
+function closeLB(){document.getElementById("lightbox").hidden=true;document.body.style.overflow=""}
+function drawLB(){
+  const s=PHOTO[lbIdx];const mine=picsOf(s.id);const lb=document.getElementById("lightbox");
+  const p=mine[lbPhoto];
+  lb.innerHTML=`<div class="lb-top"><div><b>${esc(s.en)}</b><div class="han" style="color:var(--gold)">${esc(s.ko)}</div></div><button class="lb-x" id="lbx" aria-label="ปิด">×</button></div>
+  <div class="lb-stage" id="lbstage">${p?`<img src="${p.src}" alt="${esc(s.en)}">`:`<div class="lb-card"><div class="k">${esc(s.ko)}</div><p>จุดนี้ยังไม่มีรูปที่เปิดสิทธิ์ให้ใช้ได้ เปิดดูรูปจริงจากลิงก์ด้านล่างได้เลย</p>
+    <div class="links" style="justify-content:center"><a href="${naverImg(s.photo)}" target="_blank" rel="noopener">Naver รูป</a><a href="${igTag(s.tag)}" target="_blank" rel="noopener">Instagram #${esc(s.tag)}</a><a href="${googleImg(s.photo)}" target="_blank" rel="noopener">Google</a>${(s.sources||[]).map(([l,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(l)}</a>`).join("")}</div></div>`}</div>
+  ${p?(p.mine!=null
+    ?`<div class="lb-credit">รูปที่เพิ่มเอง · ${esc(p.name)} · ${lbPhoto+1}/${mine.length} <button class="btn" style="margin-left:8px;min-height:30px;padding:3px 10px;background:transparent;color:#fff" id="lbdel">ลบรูปนี้</button></div>`
+    :`<div class="lb-credit"><span style="color:#F7F4EF">${esc(p.alt)}</span><br>ภาพ: ${esc(p.by)}${p.link?` · ${esc(p.lic)} · <a href="${p.link}" target="_blank" rel="noopener" style="color:var(--gold)">ต้นฉบับบน Wikimedia Commons</a>`:""} · ${lbPhoto+1}/${mine.length}</div>
+      <div class="links" style="justify-content:center;margin-top:8px"><a href="${naverImg(s.photo)}" target="_blank" rel="noopener">รูปเพิ่มบน Naver</a><a href="${igTag(s.tag)}" target="_blank" rel="noopener">#${esc(s.tag)}</a></div>`):""}
+  <div class="lb-nav"><button id="lbp">‹ ก่อนหน้า</button><span class="tnum" style="font-size:13px;color:#BDB4A7">${lbIdx+1} / ${PHOTO.length}</span><button id="lbn">ถัดไป ›</button></div>`;
+  lb.querySelector("#lbx").onclick=closeLB;
+  lb.querySelector("#lbp").onclick=()=>step(-1);lb.querySelector("#lbn").onclick=()=>step(1);
+  const del=lb.querySelector("#lbdel");if(del)del.onclick=()=>{const own=load("ph:"+s.id,[])||[];own.splice(p.mine,1);save("ph:"+s.id,own);lbPhoto=Math.max(0,lbPhoto-1);drawLB();rerender()};
+  let sx=null;const st=lb.querySelector("#lbstage");
+  st.addEventListener("touchstart",e=>sx=e.touches[0].clientX,{passive:true});
+  st.addEventListener("touchend",e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>45)step(dx<0?1:-1);sx=null});
+}
+function step(dir){const s=PHOTO[lbIdx];const n=picsOf(s.id).length;
+  if(n&&lbPhoto+dir>=0&&lbPhoto+dir<n){lbPhoto+=dir}else{lbIdx=(lbIdx+dir+PHOTO.length)%PHOTO.length;const m=picsOf(PHOTO[lbIdx].id).length;lbPhoto=dir<0&&m?m-1:0}drawLB()}
+document.addEventListener("keydown",e=>{if(document.getElementById("lightbox").hidden)return;if(e.key==="Escape")closeLB();if(e.key==="ArrowRight")step(1);if(e.key==="ArrowLeft")step(-1)});
+
+/* ---------- SHOPPING ---------- */
+const oy=q=>"https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query="+encodeURIComponent(q);
+const nv=q=>"https://search.naver.com/search.naver?query="+encodeURIComponent(q);
+const SEED=[
+ {id:"s1",shop:"oy",name:"Jung Saem Mool cushion foundation",ko:"정샘물 쿠션",note:"เลือกรุ่นและเบอร์สีที่ร้าน",pri:"must",link:oy("정샘물 쿠션")},
+ {id:"s2",shop:"oy",name:"Beauty of Joseon sunscreen",ko:"조선미녀 선크림",note:"",pri:"must",link:oy("조선미녀 선크림")},
+ {id:"s3",shop:"oy",name:"Beauty of Joseon skincare",ko:"조선미녀",note:"",pri:"maybe",link:oy("조선미녀")},
+ {id:"s4",shop:"oy",name:"Ongredients skincare",ko:"온그리디언츠",note:"",pri:"maybe",link:oy("온그리디언츠")},
+ {id:"s5",shop:"oy",name:"Ryo Root:Gen scalp products",ko:"려 루트젠",note:"",pri:"maybe",link:oy("려 루트젠")},
+ {id:"s6",shop:"daiso",name:"Makeup puffs and sponges",ko:"다이소 퍼프",pri:"maybe",link:nv("다이소 퍼프 추천")},
+ {id:"s7",shop:"daiso",name:"Makeup brushes",ko:"다이소 메이크업 브러쉬",pri:"maybe",link:nv("다이소 메이크업 브러쉬")},
+ {id:"s8",shop:"daiso",name:"Travel organisers and storage pouches",ko:"다이소 여행용 파우치",pri:"maybe",link:nv("다이소 여행용 파우치")},
+ {id:"s9",shop:"daiso",name:"Beauty accessories",ko:"다이소 뷰티 소품",pri:"maybe",link:nv("다이소 뷰티 소품")},
+ {id:"s10",shop:"daiso",name:"Small travel items",ko:"다이소 여행용품",pri:"maybe",link:nv("다이소 여행용품")},
+ {id:"s11",shop:"pharm",name:"Skin barrier repair cream",ko:"약국 장벽크림",note:"แจ้งเภสัชกรว่าผิวแห้ง/ระคายเคือง ให้ช่วยเลือก",pri:"maybe",link:nv("약국 장벽크림")},
+ {id:"s12",shop:"pharm",name:"Dry skin moisturiser",ko:"약국 보습크림",pri:"maybe",link:nv("약국 보습크림")},
+ {id:"s13",shop:"pharm",name:"Post-treatment aftercare",ko:"시술 후 재생크림",note:"ซื้อตามที่คลินิกแนะนำหลังรู้ประเภททรีตเมนต์เท่านั้น",pri:"maybe",link:nv("시술 후 재생크림")}
+];
+const SHOPS={oy:{l:"Olive Young",ko:"올리브영"},daiso:{l:"Daiso Korea",ko:"다이소"},pharm:{l:"ร้านขายยาเกาหลี",ko:"약국"}};
+let items=load("shop",null);if(!Array.isArray(items)){items=SEED.map(x=>({...x,qty:1,price:"",bought:false,note:x.note||""}))}
+let shopF=load("shopf","all"),priF="all",q="";
+let rate=load("rate","");
+function saveItems(){save("shop",items)}
+function totals(){let all=0,left=0;for(const it of items){const p=+it.price||0;const v=p*(+it.qty||1);all+=v;if(!it.bought)left+=v}return{all,left}}
+const krw=n=>"₩"+Math.round(n).toLocaleString("en-US");
+const thb=n=>rate>0?"≈ ฿"+Math.round(n*rate).toLocaleString("en-US"):"ใส่อัตราแลกเปลี่ยนเพื่อดูเป็นบาท";
+function renderShopping(){
+  const el=document.getElementById("v-shopping");const t=totals();
+  const vis=items.filter(it=>(shopF==="all"||it.shop===shopF)&&(priF==="all"||(priF==="bought"?it.bought:(it.pri===priF&&!it.bought)))&&(!q||(it.name+" "+(it.ko||"")+" "+(it.note||"")).toLowerCase().includes(q.toLowerCase())));
+  el.innerHTML=`
+  <div class="sec-head"><div><div class="eyebrow">Shopping list</div><h2>ของที่จะซื้อ</h2></div>
+   <div class="tools"><button class="btn" id="exportShop">${I.copy}คัดลอกรายการ</button></div></div>
+  <div class="shop-top">
+    <div class="info">ราคา เบอร์สี และสต็อกยังไม่ได้ใส่ เพราะต้องเช็กที่ร้านจริง ใส่ราคาเองเมื่อเห็นป้ายแล้วงบจะคำนวณให้ ลิงก์ Olive Young ไปที่หน้าค้นหาของเว็บเกาหลี ส่วน Daiso และร้านยาไปที่ผลค้นหา Naver พร้อมรูปสินค้า</div>
+    <div class="panel"><div class="budget">
+      <div><label>งบรวม</label><div class="n">${krw(t.all)}</div><div class="photo-hint">${thb(t.all)}</div></div>
+      <div><label>ยังไม่ได้ซื้อ</label><div class="n">${krw(t.left)}</div><div class="photo-hint">${thb(t.left)}</div></div>
+      <div style="grid-column:1/-1"><label for="rate">บาทต่อ 1 วอน (ใส่เรตที่คุณแลกได้จริง)</label><input id="rate" class="field" inputmode="decimal" placeholder="เช่น 0.025" value="${esc(rate)}"></div>
+    </div></div>
+  </div>
+  <div id="shopCopyHost"></div>
+  <div class="filters" style="margin-top:14px">${[["all","ทุกร้าน"],["oy","Olive Young"],["daiso","Daiso"],["pharm","ร้านขายยา"]].map(([k,l])=>`<button class="fchip" data-sf="${k}" aria-pressed="${shopF===k}">${l}</button>`).join("")}</div>
+  <div class="searchrow">
+    <input id="shopSearch" class="field" placeholder="ค้นหาสินค้า" value="${esc(q)}">
+    <select id="priSel" class="field" style="flex:0 0 auto;width:auto" aria-label="กรองตามความสำคัญ">
+      <option value="all"${priF==="all"?" selected":""}>ทุกสถานะ</option><option value="must"${priF==="must"?" selected":""}>Must Buy</option><option value="maybe"${priF==="maybe"?" selected":""}>Maybe</option><option value="bought"${priF==="bought"?" selected":""}>ซื้อแล้ว</option>
+    </select>
+  </div>
+  ${Object.keys(SHOPS).map(k=>{const g=vis.filter(i=>i.shop===k);if(!g.length)return"";return `<div class="shopgroup"><h3>${SHOPS[k].l} <span class="han muted" style="font-size:13px">${SHOPS[k].ko}</span></h3><div class="items">${g.map(itemHTML).join("")}</div></div>`}).join("")||`<p class="muted">ไม่พบสินค้าตามตัวกรอง</p>`}
+  <form class="addform" id="addForm">
+    <div class="full" style="font-weight:600">เพิ่มสินค้าเอง</div>
+    <input class="field full" id="addName" placeholder="ชื่อสินค้า" required>
+    <input class="field" id="addKo" placeholder="ชื่อเกาหลี (ถ้ามี)">
+    <select class="field" id="addShop">${Object.entries(SHOPS).map(([k,v])=>`<option value="${k}">${v.l}</option>`).join("")}</select>
+    <select class="field" id="addPri"><option value="must">Must Buy</option><option value="maybe" selected>Maybe</option></select>
+    <button class="btn primary" type="submit" style="justify-content:center">เพิ่มลงรายการ</button>
+  </form>`;
+  el.querySelector("#rate").addEventListener("change",e=>{const v=parseFloat(e.target.value);rate=v>0?v:"";save("rate",rate);renderShopping()});
+  el.querySelector("#shopSearch").addEventListener("input",e=>{q=e.target.value;const pos=e.target.selectionStart;renderShopping();const s=document.getElementById("shopSearch");s.focus();s.setSelectionRange(pos,pos)});
+  el.querySelector("#priSel").addEventListener("change",e=>{priF=e.target.value;renderShopping()});
+  el.querySelector("#addForm").addEventListener("submit",e=>{e.preventDefault();const n=el.querySelector("#addName").value.trim();if(!n)return;
+    const ko=el.querySelector("#addKo").value.trim();const shop=el.querySelector("#addShop").value;
+    items.push({id:"c"+Date.now(),shop,name:n,ko,pri:el.querySelector("#addPri").value,qty:1,price:"",bought:false,note:"",link:shop==="oy"?oy(ko||n):nv(ko||n)});saveItems();toast("เพิ่ม "+n+" แล้ว");renderShopping()});
+  el.querySelector("#exportShop").onclick=()=>{
+    const txt="Seoul Autumn 2026 · Shopping list\n"+Object.keys(SHOPS).map(k=>{const g=items.filter(i=>i.shop===k);return g.length?`\n${SHOPS[k].l}\n`+g.map(i=>`${i.bought?"[x]":"[ ]"} ${i.name}${i.ko?" ("+i.ko+")":""} ×${i.qty}${i.pri==="must"?" · Must":""}${i.price?" · "+krw(i.price):""}${i.note?" · "+i.note:""}`).join("\n"):""}).join("")+`\n\nรวม ${krw(t.all)}`;
+    copyText(txt,"คัดลอกรายการช้อปปิ้งแล้ว",el.querySelector("#shopCopyHost"))};
+}
+function itemHTML(it){return `<div class="item${it.bought?" bought":""}">
+  <input type="checkbox" class="bigchk" id="b-${it.id}" data-buy="${it.id}" ${it.bought?"checked":""} aria-label="ซื้อแล้ว">
+  <div style="min-width:0"><label for="b-${it.id}" class="iname">${esc(it.name)}</label>${it.ko?`<div class="isub han">${esc(it.ko)}</div>`:""}
+    <div class="links" style="margin-top:6px">${it.link?`<a href="${it.link}" target="_blank" rel="noopener">ดูสินค้า/รูป</a>`:""}${it.ko?`<button data-copyko="${esc(it.ko)}">คัดลอกชื่อเกาหลี</button>`:""}</div></div>
+  <div class="irow">
+    <select data-pri="${it.id}" aria-label="ความสำคัญ"><option value="must"${it.pri==="must"?" selected":""}>Must Buy</option><option value="maybe"${it.pri==="maybe"?" selected":""}>Maybe</option></select>
+    <input class="qty" type="number" min="1" value="${esc(it.qty)}" data-qty="${it.id}" aria-label="จำนวน">
+    <input class="price tnum" inputmode="numeric" placeholder="ราคา ₩" value="${esc(it.price)}" data-price="${it.id}" aria-label="ราคาวอนต่อชิ้น">
+    <input class="inote" placeholder="โน้ต เช่น เบอร์สี" value="${esc(it.note)}" data-inote="${it.id}" aria-label="โน้ต">
+    <button class="xbtn" data-del="${it.id}">ลบ</button>
+  </div></div>`}
+const findIt=id=>items.find(i=>i.id===id);
+document.addEventListener("change",e=>{
+  const b=e.target.closest("[data-buy]");if(b){findIt(b.dataset.buy).bought=b.checked;saveItems();renderShopping();return}
+  const p=e.target.closest("[data-pri]");if(p){findIt(p.dataset.pri).pri=p.value;saveItems();return}
+  const qn=e.target.closest("[data-qty]");if(qn){findIt(qn.dataset.qty).qty=Math.max(1,parseInt(qn.value)||1);saveItems();renderShopping();return}
+  const pr=e.target.closest("[data-price]");if(pr){findIt(pr.dataset.price).price=pr.value.replace(/[^\d]/g,"");saveItems();renderShopping();return}
+  const n=e.target.closest("[data-inote]");if(n){findIt(n.dataset.inote).note=n.value;saveItems();return}
+});
+document.addEventListener("click",e=>{
+  const d=e.target.closest("[data-del]");if(d){items=items.filter(i=>i.id!==d.dataset.del);saveItems();toast("ลบแล้ว");renderShopping();return}
+  const sf=e.target.closest("[data-sf]");if(sf){shopF=sf.dataset.sf;save("shopf",shopF);renderShopping()}
+});
+
+/* ---------- MAP & SAVED ---------- */
+let mapF=load("mapf","all");
+function renderMap(){
+  const el=document.getElementById("v-map");
+  const favs=ALL.filter(s=>fav[s.id]);
+  el.innerHTML=`
+  <div class="sec-head"><div><div class="eyebrow">Naver Map</div><h2>แผนที่และสถานที่ที่บันทึก</h2></div></div>
+  <div class="info" style="margin-bottom:14px">ทุกปุ่มเปิดผลค้นหาชื่อเกาหลีใน Naver Map ซึ่งใช้งานในเกาหลีได้ดีกว่า Google Maps กดเส้นทางต่อในแอป Naver ได้เลย ยังไม่ได้ใส่ place ID และไม่ได้ประเมินเวลาเดินทาง ให้ดูเวลาจริงใน Naver ตอนออกเดินทาง</div>
+  <div class="filters">${[["all","ทุกวัน"],["1","Day 1"],["2","Day 2"],["3","Day 3"],["4","Day 4"],["5","Day 5"],["fav",`★ บันทึกไว้ (${favs.length})`]].map(([k,l])=>`<button class="fchip" data-mf="${k}" aria-pressed="${mapF===k}">${l}</button>`).join("")}</div>
+  ${mapF==="fav"
+    ?(favs.length?`<ol class="seq">${favs.map((s,i)=>seqHTML(s,i)).join("")}</ol>`:`<p class="muted">ยังไม่มีสถานที่ที่บันทึก กดดาวในหน้าแผนเที่ยวเพื่อบันทึก</p>`)
+    :DAYS.filter(d=>mapF==="all"||String(d.n)===mapF).map(d=>{const ss=d.stops.filter(s=>s.ko&&!s.nomap);
+      return `<div class="mapday"><h3>Day ${d.n} · ${d.dshort} <span class="han muted" style="font-size:14px;font-weight:500">${esc(d.ko)}</span></h3><ol class="seq">${ss.map((s,i)=>seqHTML(s,i)).join("")}</ol></div>`}).join("")}
+  <div class="panel" style="margin-top:8px"><h3>เรื่องเดินทาง</h3>
+   <p style="margin:0;font-size:14px">ที่พักเมียงดง · ออกเดินทาง 09:00 ทุกวัน · เดินทางด้วยรถไฟใต้ดินเป็นหลัก (🚇) นั่งแท็กซี่ (🚕) เฉพาะช่วงที่เวลาแน่น หน้างานถ้าเลทค่อยเรียกแท็กซี่ เวลาเดินทางเป็นค่าประมาณ · วันที่ 1 เข้าเมืองแล้วฝากกระเป๋าที่โรงแรมก่อน · วันที่ 2 ไล่จากซอชนไปจงโน (ตะวันตก → ตะวันออก) มีไปกลับแท็กซี่ช่วงเดียวที่มยองนยุนดัง · วันที่ 3 นัมซาน → จองดง → อีฮวา → ฮงแด (ตะวันออก → ตะวันตก) · วันที่ 4 โอลิมปิกพาร์ก → โซลฟอเรสต์ → ซองซู → อัปกูจอง · วันที่ 5 เอาท์เล็ตกิมโป → ยออีโด</p>
+  </div>`;
+}
+function seqHTML(s,i){return `<li><div class="num">${i+1}</div><div class="body">
+  <div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><div><b class="latin">${esc(s.en.split(" — ")[0])}</b>${fav[s.id]?' <span style="color:var(--gilt)">★</span>':""}<div class="ko">${esc(s.ko)}</div></div><span class="photo-hint tnum">D${s.day} · ${s.time}${s.end?"–"+s.end:""}</span></div>
+  <div>${pills(s)}</div>
+  <div class="actions"><a class="btn naver" href="${naver(s.addr||s.ko)}" target="_blank" rel="noopener">${I.pin}Naver Map</a><button class="btn" data-copyko="${esc(s.ko)}">${I.copy}คัดลอกชื่อ</button><button class="chk" data-fav="${s.id}" aria-pressed="${!!fav[s.id]}">${fav[s.id]?I.star:I.starO}<span>${fav[s.id]?"บันทึกแล้ว":"บันทึก"}</span></button></div>
+</div></li>`}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-mf]");if(b){mapF=b.dataset.mf;save("mapf",mapF);renderMap()}});
+
+/* ---------- boot ---------- */
+function render(k){({overview:renderOverview,itinerary:renderItinerary,gallery:renderGallery,shopping:renderShopping,map:renderMap})[k]();setTimeout(igProcess,0)}
+setTab(curTab);
+let rz;window.addEventListener("resize",()=>{clearTimeout(rz);rz=setTimeout(()=>{if(curTab==="overview")drawLeaves()},200)});
+})();
+</script>
+
+</body></html>
