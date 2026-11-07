@@ -259,7 +259,7 @@ h1,h2,h3,.brand,.dayhead h2,.sec-head h2,.panel h3,.card-h .en{font-family:"Mali
 .top{background:color-mix(in srgb,#FFF8EE 90%,transparent);border-bottom:2px dashed #FFC2D1}
 .brand .han{color:var(--accent)}
 .hero{background:linear-gradient(135deg,#FF8FAB 0%,#FFB36B 55%,#FFD23F 100%);color:#2E2A4A;border:2.5px solid var(--ink);box-shadow:5px 5px 0 var(--ink);border-radius:24px}
-.hero p,.hero .meta{color:#2E2A4A}.hero .meta b,.countdown b{color:#3D348B}
+.hero p,.hero .meta{color:#2E2A4A}.hero .eyebrow{color:#3D348B}.hero .han-big{text-shadow:3px 3px 0 #2E2A4A}.hero .meta b,.countdown b{color:#3D348B}
 .hero::after{content:"🍁 ✨ 🎄 ⭐";position:absolute;right:16px;top:12px;font-size:22px;letter-spacing:6px;opacity:.9;transform:rotate(-6deg)}
 .panel,.card{border:2px solid var(--ink);box-shadow:3px 3px 0 #FFC2D1}
 .stop.is-must .card{border-color:var(--ink);box-shadow:3px 3px 0 #FFD9A8}
@@ -363,7 +363,7 @@ const DAYS=[
   stops:[
    {id:"tobaekbeom",time:"09:00",end:"09:25",en:"🚶 Walk from hotel to Baekbeom Plaza",st:"est",desc:"เดินจากโรงแรม (을지로입구) ผ่านเมียงดงขึ้นเนินนัมซาน ประมาณ 25 นาที · ถ้าไม่อยากเดินขึ้นเนิน แท็กซี่ประมาณ 7 นาที",minor:true,nomap:true},
    {id:"baekbeom",time:"09:25",end:"10:10",en:"Baekbeom Plaza, Namsan",ko:"백범광장",st:"must",desc:"ลานบนเนินนัมซาน ใบไม้เปลี่ยนสี กำแพงเมืองเก่า วิวเมือง · ช่วงพีค 8–18 พ.ย.",photo:"백범광장 가을 단풍",tag:"백범광장"},
-   {id:"todeoksu",time:"10:10",end:"10:35",en:"🚶 Walk down to Deoksugung",st:"est",desc:"เดินลงเนินผ่านนัมแดมุน ประมาณ 25 นาที · ถ้าเลทนั่งแท็กซี่ประมาณ 10 นาที",minor:true,nomap:true},
+   {id:"todeoksu",time:"10:10",end:"10:35",en:"🚶 Walk down to Deoksugung",st:"est",desc:"เดินลงเนินฝั่งสถานีฮเวฮยอน → ทะลุตลาดนัมแดมุน (남대문시장) → ประตูซุงนเยมุน (숭례문) → ถนนเซจงแดโร ถึงด็อกซูกุง ประมาณ 25 นาที · ช่วง 10 โมงร้านในตลาดเปิดแล้ว แวะซื้อโฮต็อกได้ แต่เวลาเผื่อไว้น้อย ถ้าจะช้อปควรตัดเวลาจากช่วงอื่น · ถ้าเลทนั่งแท็กซี่ประมาณ 10 นาที",minor:true,nomap:true},
    {id:"deoksu",time:"10:35",end:"11:25",en:"Deoksugung Palace",ko:"덕수궁",st:"planned",desc:"สีแดงปนเหลือง ใกล้พีค",photo:"덕수궁 가을 단풍",tag:"덕수궁"},
    {id:"jeongdong",time:"11:25",end:"11:55",en:"Jeongdong-gil autumn foliage street",ko:"정동길",st:"planned",desc:"ถนนข้างกำแพงวัง เดินต่อจากวังได้",photo:"정동길 가을 단풍",tag:"정동길"},
    {id:"d3lunch",time:"11:55",end:"13:20",en:"Lunch near City Hall",ko:"굽돌집 서울시청본점",addr:"서울 중구 세종대로14길 18",st:"planned",desc:"เดินจากจองดง 5 นาที · กดขยายดูลิสต์ร้านแถวนี้ พร้อมปุ่ม Naver Map ไปเลือกหน้างานได้"},
