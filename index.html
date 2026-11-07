@@ -364,8 +364,10 @@ const DAYS=[
    {id:"togimpo",time:"10:15",end:"11:00",en:"🚕 Taxi to Hyundai Premium Outlet Gimpo",st:"est",desc:"ประมาณ 45 นาที",minor:true,nomap:true},
    {id:"gimpo",time:"11:00",end:"15:30",en:"Hyundai Premium Outlet Gimpo",ko:"현대프리미엄아울렛 김포",st:"must",desc:"เปิด 10:30–21:00 ทุกวัน · ช้อปและกินมื้อเที่ยวในเอาท์เล็ต",photo:"현대프리미엄아울렛 김포",tag:"현대아울렛김포"},
    {id:"toyeouido",time:"15:30",end:"16:00",en:"🚕 Taxi to Yeouido",st:"est",desc:"ประมาณ 30 นาที",minor:true,nomap:true},
-   {id:"hyundaixmas",time:"16:15",end:"18:00",en:"The Hyundai Seoul — Christmas Village 5F",ko:"더현대 서울 크리스마스 빌리지",st:"must",desc:"10 พ.ย.–31 ธ.ค. · 10:30–19:30 · ต้องจองรอบในแอป The Hyundai",photo:"더현대 서울 크리스마스",tag:"더현대크리스마스"},
-   {id:"d5dinner",time:"18:30",end:"20:00",en:"Dinner in Yeouido",ko:"방돈식당 여의도",st:"planned",desc:"กดขยายดูลิสต์ร้านแถวนี้ พร้อมปุ่ม Naver Map ไปเลือกหน้างานได้ · กลับเมียงดงด้วยแท็กซี่ประมาณ 25 นาที",nomap:true}
+   {id:"hyundaixmas",time:"16:00",end:"17:30",en:"The Hyundai Seoul — Christmas Village 5F",ko:"더현대 서울 크리스마스 빌리지",st:"must",desc:"10 พ.ย.–31 ธ.ค. · 10:30–19:30 · ต้องจองรอบในแอป The Hyundai",photo:"더현대 서울 크리스마스",tag:"더현대크리스마스"},
+   {id:"d5dinner",time:"17:30",end:"18:40",en:"Dinner in Yeouido",ko:"방돈식당 여의도",st:"planned",desc:"มื้อเย็นเร็วหน่อยเพื่อไปทันห้างอัปกูจอง · กดขยายดูลิสต์ร้านแถวนี้ พร้อมปุ่ม Naver Map ไปเลือกหน้างานได้",nomap:true},
+   {id:"toapgu",time:"18:40",end:"19:05",en:"🚕 Taxi to Hyundai Apgujeong",st:"est",desc:"ประมาณ 25 นาที · บอกคนขับ 현대백화점 압구정본점",minor:true,nomap:true},
+   {id:"apgujeong",time:"19:05",end:"19:50",en:"Hyundai Apgujeong — Christmas façade & 13 m tree",ko:"현대백화점 압구정본점",addr:"서울 강남구 압구정로 165",st:"must",desc:"ด้านหน้าห้างแต่งธีมคริสต์มาส ต้นคริสต์มาส 13 ม. และโฟโต้โซนหน้าประตูหลัก ตั้งแต่ 1 พ.ย. · มาตอนมืดไฟสวย · ดูได้ช่วงห้างเปิด ควรถึงก่อน 19:30 · กลับโรงแรมแท็กซี่ประมาณ 25–30 นาที",tag:"압구정현대백화점"}
   ]}
 ];
 const IG={
@@ -377,6 +379,7 @@ const IG={
  seongsu:[["p/DDMlEaVv29V","@liebepetty","ถนนอาชาซันโร ย่านซองซู"]],
  samcheong:[["p/CkVN1_7Pn34","@henryjoo3","ถนนซัมชองดง เดินได้ทั้งกลางวัน กลางคืน และวันฝนตก"]],
  cafedelyon:[["p/DR_tXFjESLV","Café de Lyon Ewha","สาขาอีฮวา 3 ชั้น ใกล้ทางออก 3"],["p/DSAUuJmj0cK","Café de Lyon Ewha","เค้กและมิลเฟย"]],
+ apgujeong:[["p/DfXOpPFkukC","@da_hlia_","ด้านหน้าห้าง Hyundai อัปกูจองธีมคริสต์มาส ปี 2026 (โพสต์ 5 พ.ย.)"]],
  hyoja:[["p/DeR52FMEpaN","@liebepetty","ถนนฮโยจาโร กำแพงวังคยองบกกุงฝั่งตะวันตกใต้ต้นกิงโกะ"]],
  hyundaixmas:[["p/De3vrLCEk-V","@liebepetty","สวนริมแม่น้ำฮันยออีโด พ.ย. 2025 · อยู่ไม่ไกลจาก The Hyundai ถ้าเหลือเวลาเดินไปดูพระอาทิตย์ตกได้"]]
 };
@@ -794,7 +797,7 @@ function renderMap(){
     :DAYS.filter(d=>mapF==="all"||String(d.n)===mapF).map(d=>{const ss=d.stops.filter(s=>s.ko&&!s.nomap);
       return `<div class="mapday"><h3>Day ${d.n} · ${d.dshort} <span class="han muted" style="font-size:14px;font-weight:500">${esc(d.ko)}</span></h3><ol class="seq">${ss.map((s,i)=>seqHTML(s,i)).join("")}</ol></div>`}).join("")}
   <div class="panel" style="margin-top:8px"><h3>เรื่องเดินทาง</h3>
-   <p style="margin:0;font-size:14px">ที่พัก ibis Ambassador Myeongdong / Skypark Myeongdong ใกล้สถานี 을지로입구 (สาย 2 สีเขียว) · ออกเดินทาง 09:00 ทุกวัน · เดินทางด้วยรถไฟใต้ดินเป็นหลัก (🚇) นั่งแท็กซี่ (🚕) เฉพาะช่วงที่เวลาแน่น หน้างานถ้าเลทค่อยเรียกแท็กซี่ เวลาเดินทางเป็นค่าประมาณ · วันที่ 1 มีรถรับจากสนามบิน ฝากกระเป๋าที่โรงแรมก่อน · วันที่ 2 อันกุก → วอนซอดง → SangGuk แล้วแท็กซี่ข้ามไปฮโยจาโร → จบที่จงโน 3-กา · วันที่ 3 นัมซาน → จองดง → อีฮวา (แค่ประตูหน้า) + Café de Lyon → ฮงแด (ตะวันออก → ตะวันตก) · วันที่ 4 โอลิมปิกพาร์ก → โซลฟอเรสต์ → ซองซู (จบที่ซองซู) · วันที่ 5 เอาท์เล็ตกิมโป → ยออีโด</p>
+   <p style="margin:0;font-size:14px">ที่พัก ibis Ambassador Myeongdong / Skypark Myeongdong ใกล้สถานี 을지로입구 (สาย 2 สีเขียว) · ออกเดินทาง 09:00 ทุกวัน · เดินทางด้วยรถไฟใต้ดินเป็นหลัก (🚇) นั่งแท็กซี่ (🚕) เฉพาะช่วงที่เวลาแน่น หน้างานถ้าเลทค่อยเรียกแท็กซี่ เวลาเดินทางเป็นค่าประมาณ · วันที่ 1 มีรถรับจากสนามบิน ฝากกระเป๋าที่โรงแรมก่อน · วันที่ 2 อันกุก → วอนซอดง → SangGuk แล้วแท็กซี่ข้ามไปฮโยจาโร → จบที่จงโน 3-กา · วันที่ 3 นัมซาน → จองดง → อีฮวา (แค่ประตูหน้า) + Café de Lyon → ฮงแด (ตะวันออก → ตะวันตก) · วันที่ 4 โอลิมปิกพาร์ก → โซลฟอเรสต์ → ซองซู (จบที่ซองซู) · วันที่ 5 เอาท์เล็ตกิมโป → ยออีโด (The Hyundai) → ห้าง Hyundai อัปกูจอง</p>
   </div>`;
 }
 function seqHTML(s,i){return `<li><div class="num">${i+1}</div><div class="body">
