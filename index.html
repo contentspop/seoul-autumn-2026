@@ -365,9 +365,10 @@ const DAYS=[
    {id:"d5breakfast",time:"09:30",end:"10:15",en:"Breakfast in Myeongdong",st:"tbc",nomap:true,minor:true},
    {id:"togimpo",time:"10:15",end:"11:00",en:"🚕 Taxi to Hyundai Premium Outlet Gimpo",st:"est",desc:"ประมาณ 45 นาที",minor:true,nomap:true},
    {id:"gimpo",time:"11:00",end:"15:30",en:"Hyundai Premium Outlet Gimpo",ko:"현대프리미엄아울렛 김포",st:"must",desc:"เปิด 10:30–21:00 ทุกวัน · ช้อปและกินมื้อเที่ยวในเอาท์เล็ต",photo:"현대프리미엄아울렛 김포",tag:"현대아울렛김포"},
-   {id:"toyeouido",time:"15:30",end:"16:00",en:"🚕 Taxi to Yeouido",st:"est",desc:"ประมาณ 30 นาที",minor:true,nomap:true},
-   {id:"hyundaixmas",time:"16:15",end:"18:00",en:"The Hyundai Seoul — Christmas Village 5F",ko:"더현대 서울 크리스마스 빌리지",st:"must",desc:"10 พ.ย.–31 ธ.ค. · 10:30–19:30 · ต้องจองรอบในแอป The Hyundai",photo:"더현대 서울 크리스마스",tag:"더현대크리스마스"},
-   {id:"d5dinner",time:"18:30",end:"20:00",en:"Dinner in Yeouido",ko:"방돈식당 여의도",st:"planned",desc:"กดขยายดูลิสต์ร้านแถวนี้ พร้อมปุ่ม Naver Map ไปเลือกหน้างานได้ · กลับโรงแรมแท็กซี่ประมาณ 25 นาที",nomap:true}
+   {id:"toyeouido",time:"15:30",end:"16:00",en:"🚕 Taxi to Yeouido",st:"est",desc:"ประมาณ 30 นาที · บอกคนขับ 여의도한강공원 (여의나루역)",minor:true,nomap:true},
+   {id:"yeouidopark",time:"16:00",end:"17:20",en:"Yeouido Hangang Park — riverside autumn & sunset",ko:"여의도한강공원",st:"must",desc:"ริมแม่น้ำฮัน ใบไม้เปลี่ยนสี ดูพระอาทิตย์ตกราว 17:20 · ใกล้สถานี 여의나루 · เดินต่อไป The Hyundai ประมาณ 15 นาที",tag:"여의도한강공원"},
+   {id:"hyundaixmas",time:"17:35",end:"19:15",en:"The Hyundai Seoul — Christmas Village 5F",ko:"더현대 서울 크리스마스 빌리지",st:"must",desc:"10 พ.ย.–31 ธ.ค. · 10:30–19:30 · ต้องจองรอบในแอป The Hyundai (จองรอบ 17:30–18:00)",photo:"더현대 서울 크리스마스",tag:"더현대크리스마스"},
+   {id:"d5dinner",time:"19:30",end:"21:00",en:"Dinner in Yeouido",ko:"방돈식당 여의도",st:"planned",desc:"กดขยายดูลิสต์ร้านแถวนี้ พร้อมปุ่ม Naver Map ไปเลือกหน้างานได้ · กลับโรงแรมแท็กซี่ประมาณ 25 นาที",nomap:true}
   ]}
 ];
 const IG={
@@ -381,7 +382,7 @@ const IG={
  cafedelyon:[["p/DR_tXFjESLV","Café de Lyon Ewha","สาขาอีฮวา 3 ชั้น ใกล้ทางออก 3"],["p/DSAUuJmj0cK","Café de Lyon Ewha","เค้กและมิลเฟย"]],
  apgujeong:[["p/DfXOpPFkukC","@da_hlia_","ด้านหน้าห้าง Hyundai อัปกูจองธีมคริสต์มาส ปี 2026 (โพสต์ 5 พ.ย.)"]],
  hyoja:[["p/DeR52FMEpaN","@liebepetty","ถนนฮโยจาโร กำแพงวังคยองบกกุงฝั่งตะวันตกใต้ต้นกิงโกะ"]],
- hyundaixmas:[["p/De3vrLCEk-V","@liebepetty","สวนริมแม่น้ำฮันยออีโด พ.ย. 2025 · อยู่ไม่ไกลจาก The Hyundai ถ้าเหลือเวลาเดินไปดูพระอาทิตย์ตกได้"]]
+ yeouidopark:[["p/De3vrLCEk-V","@liebepetty","สวนริมแม่น้ำฮันยออีโด ช่วง พ.ย. 2025"]]
 };
 const CAN_EMBED=/github\.io$/.test(location.hostname);
 function igBlock(id,openNow){const a=IG[id];if(!a)return "";const inner=igInner(id);if(openNow)return `<div class="igbox">${inner}</div>`;return `<details class="igd" data-igid="${id}"><summary>📷 ดูโพสต์ IG (${a.length})</summary><div class="igbox" data-igfill="${id}"></div></details>`}
